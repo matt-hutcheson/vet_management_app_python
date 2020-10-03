@@ -2,6 +2,26 @@
 
 {% block main %}
 
+<ul>
+    {% for vet in all_vets %}
+
+    <li>
+        <ul>
+            <li>
+                {{ vet.first_name}} {{ vet.last_name}}
+            </li>
+            <li>
+                {{ vet.job_title}}
+            </li>
+            <li>
+                {{ vet.id }}
+            </li>
+        </ul>
+    </li>
+
+    {% endfor %}
+</ul>
+
 <p>
 vets article
 </p>
