@@ -4,6 +4,8 @@ from models.src.vet import Vet
 
 import repositories.vet_repository as vet_repository
 
+vet_repository.delete_all()
+
 vet_1 = Vet("Lin", "McDonald", "Graduate Vet")
 vet_2 = Vet("Sharon", "Perkins", "Practice Partner")
 
