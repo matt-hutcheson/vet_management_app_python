@@ -1,3 +1,4 @@
+DROP TABLE if exists treatments;
 DROP TABLE if exists patients;
 DROP TABLE if exists vets;
 DROP TABLE if exists clients;

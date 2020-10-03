@@ -1,5 +1,5 @@
 import psycopg2
-import psycopg2.extensions as ext:
+import psycopg2.extras as ext
     
 def run_sql(sql, values = None):
     conn = None
@@ -7,7 +7,7 @@ def run_sql(sql, values = None):
 
     try:
         conn = psycopg2.connect("dbname='vet_management'")
-        cur = conn.cursor(cursor_factory = ext.DictCursor)
+        cur = conn.cursor(cursor_factory=ext.DictCursor)
         cur.execute(sql, values)
         conn.commit()
         results = cur.fetchall()
