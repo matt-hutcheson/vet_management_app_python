@@ -2,16 +2,16 @@
 
 {% block main %}
 
-<form action="/vets" method="post"></form>
+<form action="/vets" method="post">
 <ul>
-    <li>
+    <!-- <li>
         <img src="/static/images/" alt="vet_profile.png">
     </li>
     <li>
         <form action="/vets/new/add-picture" method="get">
             <input type="submit" value="Add Picture">
         </form>
-    </li>
+    </li> -->
     <li>
         <label for="vet-first-name">First Name</label>
     </li>
@@ -33,15 +33,15 @@
             <option value="graduate">Graduate</option>
             <option value="junior">Junior</option>
             <option value="senior">Senior</option>
+            <option value="partner">Practice Partner</option>
             <option value=""></option>
         </select>
     </li>
     <li>
-        <form action="/vets/" method="get">
-            <input type="submit" value="Create">
-        </form>
+        <input type="submit" value="Create">
     </li>
 </ul>
+</form>
 
 
 {% endblock %}

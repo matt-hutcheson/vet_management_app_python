@@ -17,3 +17,12 @@ def vets():
 def new_vet():
     return render_template("vets/new.html")
 
+@vets_blueprint.route("/vets", methods=["POST"])
+def create_vet():
+    first_name = request.form["first-name"]
+    print(first_name)
+    last_name = request.form["last-name"]
+    job_title = request.form["job-title"]
+    new_vet = Vet(first_name, last_name, job_title)
+    vet_repository.save(new_vet)
+    return redirect("/vets")
