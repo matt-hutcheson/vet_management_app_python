@@ -19,8 +19,10 @@ class TestPatient(unittest.TestCase):
         self.assertEqual(None, self.test_patient.client_id)
         self.assertEqual(None, self.test_patient.vet_id)
 
+    @unittest.skip("Delete this line to run the test")
     def test_age_to_date(self):
         pass
 
+    @unittest.skip("Delete this line to run the test")
     def test_date_to_age(self):
         pass
