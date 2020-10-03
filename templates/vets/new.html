@@ -1,0 +1,47 @@
+{% extends 'index.html'}
+
+{% block main %}
+
+<form action="/vets" method="post"></form>
+<ul>
+    <li>
+        <img src="/static/images/" alt="vet_profile.png">
+    </li>
+    <li>
+        <form action="/vets/new/add-picture" method="get">
+            <input type="submit" value="Add Picture">
+        </form>
+    </li>
+    <li>
+        <label for="vet-first-name">First Name</label>
+    </li>
+    <li>
+        <input type="text" name="first-name" id="first-name" required>
+    </li>
+    <li>
+        <label for="vet-last-name">Last Name</label>
+    </li>
+    <li>
+        <input type="text" name="last-name" id="last-name" required>
+    </li>
+    <li>
+        <label for="vet-job-title">Job Title</label>
+    </li>
+    <li>
+        <select name="job-title" id="job-title">
+            <option value="choose" disabled='True' selected="True">--Select Job Title--</option>
+            <option value="graduate">Graduate</option>
+            <option value="junior">Junior</option>
+            <option value="senior">Senior</option>
+            <option value=""></option>
+        </select>
+    </li>
+    <li>
+        <form action="/vets/" method="get">
+            <input type="submit" value="Create">
+        </form>
+    </li>
+</ul>
+
+
+{% endblock %}
