@@ -25,4 +25,6 @@ client_2 = Client("Daniel", "Jackson", "07888 888 888", "Duke Street, Glasgow, G
 client_repository.save(client_1)
 client_repository.save(client_2)
 
+client_list = client_repository.select_all()
+
 pdb.set_trace()
