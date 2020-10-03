@@ -36,5 +36,14 @@ def edit_vet(id):
     return render_template('vets/edit.html', vet=vet)
 
 # UPDATE
+@vets_blueprint.route("/vets/<id>", methods=["POST"])
+def update_vet(id):
+    first_name = request.form["first-name"]
+    last_name = request.form["last-name"]
+    job_title = request.form["job-title"]
+    id = request.form["id"]
+    vet = Vet(first_name, last_name, job_title, id)
+    vet_repository.update(vet)
+    return redirect("/vets")
 
 # DELETE
