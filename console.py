@@ -14,4 +14,6 @@ vet_repository.save(vet_2)
 
 vet_list = vet_repository.select_all()
 
+selected_vet = vet_repository.select(vet_list[0].id)
+
 pdb.set_trace()
