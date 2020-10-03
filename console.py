@@ -12,4 +12,6 @@ vet_2 = Vet("Sharon", "Perkins", "Practice Partner")
 vet_repository.save(vet_1)
 vet_repository.save(vet_2)
 
+vet_list = vet_repository.select_all()
+
 pdb.set_trace()
