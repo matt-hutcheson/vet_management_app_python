@@ -2,9 +2,40 @@
 
 {% block content %}
 
-<p>
-    index content
-</p>
+<ul>
+    <li>
+        <form action="/vets" method="GET">
+            <input type="submit" value="Vets">
+        </form>
+    </li>
+    <li>
+        <form action="/clients" method="GET">
+            <input type="submit" value="Clients">
+        </form>
+    </li>
+    <li>
+        <form action="/patients" method="GET">
+            <input type="submit" value="Patients">
+        </form>
+    </li>
+</ul>
+<ul>
+    <li>
+        <form action="/clients/new" method="get">
+            <input type="submit" value="New Client">
+        </form>
+    </li>
+    <li>
+        <form action="/patients/new" method="get">
+            <input type="submit" value="New Patient">
+        </form>
+    </li>
+    <li>
+        <form action="/treatments/new" method="get">
+            <input type="submit" value="New Treatment">
+        </form>
+    </li>
+</ul>
 
 {% block main %}
 
