@@ -32,3 +32,9 @@ CREATE TABLE patients (
     client_id INT REFERENCES clients(id) ON DELETE CASCADE,
     vet_id INT REFERENCES vets(id) ON DELETE CASCADE
 );
+
+CREATE TABLE treatments (
+    id SERIAL PRIMARY KEY,
+    notes TEXT,
+    patient_id INT REFERENCES patients(id) ON DELETE CASCADE
+);
