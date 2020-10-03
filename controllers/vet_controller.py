@@ -51,3 +51,7 @@ def update_vet(id):
 def delete_vet(id):
     vet_repository.delete(id)
     return redirect("/vets")
+
+# INDEX Clients
+
+# Index Patients

@@ -40,3 +40,7 @@ def update(vet):
     sql = "UPDATE vets SET (first_name, last_name, job_title) = (%s, %s, %s) WHERE id = %s"
     values = [vet.first_name, vet.last_name, vet.job_title, vet.id]
     run_sql(sql, values)
+
+# select_clients(id)
+
+# select_patients(id)

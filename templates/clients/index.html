@@ -1,0 +1,66 @@
+{% extends 'index.html' %}
+
+{% block main %}
+
+<ul>
+    <li>
+        Name
+    </li>
+    <li>
+        Pets
+    </li>
+    <li>
+        Phone Number
+    </li>
+    <li>
+        Address
+    </li>
+    <li>
+        Registered?
+    </li>
+    <li>
+        Vet Name
+    </li>
+</ul>
+
+{% for client in clients %}
+
+<ul>
+    <li>
+        {{ client.first_name}} {{ client.last_name}}
+    </li>
+    <li>
+        {% for pet in pets %}
+            <a href="/pet/<{{ pet.id }}>/edit"></a>{{ pet.name }}
+        {% endfor %}
+    </li>
+    <li>
+        {{ client.phone_number }}
+    </li>
+    <li>
+        {{ client.address }}
+    </li>
+    <li>
+        {{ client.registered }}
+    </li>
+    <li>
+        {{ vet.name }}
+    </li>
+    <li>
+        <form action="/clients/{{ client.id }}/all-pets" method="get">
+            <input type="submit" value="Show All Pets">
+        </form>
+    </li>
+    <li>
+        <form action="/clients/{{ client.id }}/edit" method="get">
+            <input type="submit" value="Edit">
+        </form>
+    </li>
+    <li>
+        <form action="/clients/{{ client.id }}/delete"></form>
+    </li>
+</ul>
+
+{% endfor %}
+
+{% endblock %}

@@ -11,3 +11,7 @@ class Patient():
         self.id =id
         self.vet_id = vet_id
         self.client_id = client_id
+
+    # def dob to age()
+
+    # def age to dob()
