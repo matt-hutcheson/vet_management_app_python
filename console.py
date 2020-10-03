@@ -16,4 +16,8 @@ vet_list = vet_repository.select_all()
 
 selected_vet = vet_repository.select(vet_list[0].id)
 
+vet_repository.delete(vet_list[1].id)
+
+vet_list = vet_repository.select_all()
+
 pdb.set_trace()
