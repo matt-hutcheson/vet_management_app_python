@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+
+{% block main %}
+
+<h2>Edit {{ vet.first_name }} {{ vet.last_name }}</h2>
+
+<form action="/vets/{{ vet.id }}" method="post">
+    <ul>
+        <!-- <li>
+            <img src="/static/images/" alt="vet_profile.png">
+        </li>
+        <li>
+            <form action="/vets/new/add-picture" method="get">
+                <input type="submit" value="Add Picture">
+            </form>
+        </li> -->
+        <li>
+            <label for="vet-first-name">First Name</label>
+        </li>
+        <li>
+            <input type="text" name="first-name" id="first-name" required value={{ vet.first_name }}>
+        </li>
+        <li>
+            <label for="vet-last-name">Last Name</label>
+        </li>
+        <li>
+            <input type="text" name="last-name" id="last-name" required value={{ vet.last_name }}>
+        </li>
+        <li>
+            <label for="vet-job-title">Job Title</label>
+        </li>
+        <li>
+            <select name="job-title" id="job-title">
+                <option value="graduate" {% if vet.job_title == "Graduate" %} selected {% endif %}>Graduate</option>
+                <option value="junior" {% if vet.job_title == "Junior" %} selected {% endif %}>Junior</option>
+                <option value="senior" {% if vet.job_title == "Senior" %} selected {% endif %}>Senior</option>
+                <option value="partner" {% if vet.job_title == "Practice Partner" %} selected {% endif %}>Practice Partner</option>
+            </select>
+        </li>
+        <li>
+            <input type="submit" value="Edit">
+        </li>
+    </ul>
+</form>
+
+{% endblock %}
