@@ -8,21 +8,58 @@
     <li>
         <ul>
             <li>
+                <img src="/static/images/" alt="vet_profile.png">
+            </li>
+            <li>
+                <label for="vet-name">Name</label>
+            </li>
+            <li>
                 {{ vet.first_name}} {{ vet.last_name}}
+            </li>
+            <li>
+                <label for="vet-job-title">Job Title</label>
             </li>
             <li>
                 {{ vet.job_title}}
             </li>
             <li>
+                <label for="vet-id">ID</label>
+            </li>
+            <li>
                 {{ vet.id }}
+            </li>
+            <li>
+                <form action="/vets/{{ vet.id }}/edit" method="get">
+                    <input type="submit" value="Edit">
+                </form>
+            </li>
+            <li>
+                <form action="/vets/{{ vet.id }}/delete" method="get">
+                    <input type="submit" value="Delete">
+                </form>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <form action="/vets/{{ vet.id }}/patients/index" method="get">
+                    <input type="submit" value="View Patients">
+                </form>
+            </li>
+            <li>
+                <form action="/vets/{{ vet.id }}/clients/index" method="get">
+                    <input type="submit" value="View Clients">
+                </form>
             </li>
         </ul>
     </li>
 
     {% endfor %}
+
+    <li>
+        <form action="/vets/new" method="get">
+            <input type="submit" value="Create New Vet">
+        </form>
+    </li>
 </ul>
 
-<p>
-vets article
-</p>
 {% endblock %}
