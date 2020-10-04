@@ -52,6 +52,6 @@ def delete_vet(id):
     vet_repository.delete(id)
     return redirect("/vets")
 
-# INDEX Clients
+# Edit to include client list
 
-# Index Patients
+# Edit to include patients list

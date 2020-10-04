@@ -41,7 +41,12 @@
         {{ client.address }}
     </li>
     <li>
-        {{ client.registered }}
+        {% if client.registered == True %}
+            Y
+        {% endif %}
+        {% if client.registered == False %}
+            N
+        {% endif %}
     </li>
     <li>
         {{ client.vet.first_name }} {{ client.vet.last_name}}
@@ -57,7 +62,9 @@
         </form>
     </li>
     <li>
-        <form action="/clients/{{ client.id }}/delete"></form>
+        <form action="/clients/{{ client.id }}/delete">
+            <input type="submit" value="Delete">
+        </form>
     </li>
 </ul>
 

@@ -25,14 +25,11 @@
         D.O.B
     </li>
     <li>
-        Registered?
-    </li>
-    <li>
         Status
     </li>
 </ul>
 
-{% for patient in patients %}
+{% for patient in all_patients %}
 
 <ul>
     <li>
@@ -60,9 +57,6 @@
     </li>
     <li>
         {{ patient.dob }}
-    </li>
-    <li>
-        {{ patient.registered }}
     </li>
     <li>
         {{ patient.status}}
