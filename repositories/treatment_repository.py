@@ -19,3 +19,16 @@ def save(treatment):
 def delete_all():
     sql = "DELETE FROM treatments"
     run_sql(sql)
+
+def select_all(patient_id):
+    treatments = []
+    sql = "SELECT * FROM treatments WHERE patient_id = %s"
+    values = [patient_id]
+    results = run_sql(sql, values)
+    if results is not None:
+        for row in results:
+            patient = patient_repository.select(row['patient_id'])
+            vet = vet_repository.select(row['vet_id'])
+            treatment = Treatment(row['notes'], row['date'], patient, vet, row['id'])
+            treatments.append(treatment)
+    return treatments
