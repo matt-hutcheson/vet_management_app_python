@@ -13,6 +13,10 @@ def save(client):
         client.vet = vet_repository.select(results[0]['vet_id'])
     return client
 
+def delete_all():
+    sql = "DELETE FROM clients"
+    run_sql(sql)
+
 def select_all():
     clients = []
     sql = "SELECT * FROM clients"

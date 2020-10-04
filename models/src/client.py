@@ -7,3 +7,4 @@ class Client():
         self.registered = registered
         self.id = id
         self.vet = vet
+        # self.pets = []

@@ -6,8 +6,10 @@ from models.src.client import Client
 import repositories.vet_repository as vet_repository
 import repositories.client_repository as client_repository
 
-# Vet Repo Tests
+client_repository.delete_all()
 vet_repository.delete_all()
+
+# Vet Repo Tests
 vet_1 = Vet("Lin", "McDonald", "Graduate Vet")
 vet_2 = Vet("Sharon", "Perkins", "Practice Partner")
 vet_repository.save(vet_1)
