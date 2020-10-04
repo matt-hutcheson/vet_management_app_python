@@ -62,7 +62,7 @@
         {{ patient.status}}
     </li>
     <li>
-        <form action="/treatments/<{{ patient.id }}>" method="get">
+        <form action="/treatments/{{ patient.id }}" method="get">
             <input type="submit" value="View Treatments">
         </form>
     </li>
@@ -72,7 +72,7 @@
         </form>
     </li>
     <li>
-        <form action="/patients/<{{ patient.id }}>/delete" method="POST">
+        <form action="/patients/{{ patient.id }}/delete" method="POST">
             <input type="submit" value="Delete">
         </form>
     </li>

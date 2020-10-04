@@ -18,9 +18,15 @@ def patients():
     return render_template('patients/index.html', all_patients = patients)
 
 # NEW
-@patients_blueprint.route('patients/new')
+@patients_blueprint.route('patients/new', methods=["POST"])
+def new_patient_get_client():
+    clients = client_repository.select_all()
+    return render_template('patients/select-client.html', all_clients=clients)
+
+@patients_blueprint.route('/patients/client-select')
 def new_patient():
-    return render_template('patients/new.html')
+    client = client_repository.select(request.form["client-name"])
+    return render_template('patients/new.html', client=client)
 
 # CREATE
 
