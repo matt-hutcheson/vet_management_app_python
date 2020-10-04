@@ -23,10 +23,11 @@ def new_patient_get_client():
     clients = client_repository.select_all()
     return render_template('patients/select_client.html', all_clients=clients)
 
-@patients_blueprint.route('/patients/client-select')
+@patients_blueprint.route('/patients/select-client', methods=["POST"])
 def new_patient():
-    client = client_repository.select(request.form["client-name"])
-    return render_template('patients/new.html', client=client)
+    selected_client = client_repository.select(request.form["client-name"])
+    clients = client_repository.select_all()
+    return render_template('patients/new.html', selected_client=selected_client, all_clients=clients)
 
 # CREATE
 

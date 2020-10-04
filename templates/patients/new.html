@@ -2,6 +2,30 @@
 
 {% block main %}
 
-
+<form action="" method="POST">
+    <ul>
+        <li>
+            <label for="patient-name">Name</label>
+            <input type="text" name="name" id="patient-name" required>
+        </li>
+        <li>
+            <label for="type">Type</label>
+            <input type="text" name="type" id="type" required>
+        </li>
+        <li>
+            <label for="breed">Breed</label>
+            <input type="text" name="breed" id="breed" required>
+        </li>
+        <li>
+            <label for="client-name">Client Name</label>
+            <select name="client-name" id="client-name" required>
+                <option value="" disabled="True" >--Choose Client--</option>
+                {% for client in all_clients %}
+                <option value="{{ client.id}}" {% if client.id == selected_client.id %} selected {% endif %}>{{ client.first_name }} {{ client.last_name }}</option>
+                {% endfor %}
+            </select>
+        </li>
+    </ul>
+</form>
 
 {% endblock %}
