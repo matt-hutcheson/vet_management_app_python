@@ -31,7 +31,7 @@ def new_patient():
     return render_template('patients/new.html', selected_client=selected_client, all_clients=clients, all_vets=vets)
 
 # CREATE
-@patients_blueprint.route('/patients', methods=["POST"])
+@patients_blueprint.route('/patients/create', methods=["POST"])
 def create_patient():
     name = request.form['name']
     type = request.form['type']
@@ -41,9 +41,14 @@ def create_patient():
     vet_id = request.form['vet-name']
     vet = vet_repository.select(vet_id)
     dob = request.form['dob']
-    gender = request.form['gender']
+    if request.form['gender'] == "Male":
+        gender = "M"
+    elif request.form['gender'] == "Female":
+        gender = "F"
     status = request.form['status']
-    patient = Patient(name, dob, type, breed, gender, status, vet, client)
+    check_in = request.form['check-in']
+    check_out = request.form['check-out']
+    patient = Patient(name, dob, type, breed, gender, status, vet, client, check_in, check_out)
     patient_repository.save(patient)
     return redirect('/patients')
 

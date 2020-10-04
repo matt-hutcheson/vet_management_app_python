@@ -2,7 +2,7 @@
 
 {% block main %}
 
-<form action="/patients" method="POST">
+<form action="/patients/create" method="POST">
     <ul>
         <li>
             <label for="patient-name">Name</label>
@@ -33,6 +33,14 @@
                 <option value="{{ vet.id }}">{{ vet.first_name }} {{ vet.last_name }}</option>
                 {% endfor %}
             </select>
+        </li>
+        <li>
+            <label for="check-in">Check-in Date</label>
+            <input type="text" name="check-in" id="check-in" value="DD/MM/YYYY" onclick="this.select();">
+        </li>
+        <li>
+            <label for="check-out">Check-out Date</label>
+            <input type="text" name="check-out" id="check-out" value="DD/MM/YYYY" onclick="this.select();">
         </li>
         <li>
             <label for="dob">Date of Birth</label>
