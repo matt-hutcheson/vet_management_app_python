@@ -43,4 +43,9 @@ def delete(id):
     values = [id]
     run_sql(sql, values)
 
+def update(client):
+    sql = "UPDATE clients SET (first_name, last_name, phone_number, address, registered, vet_id) = (%s, %s, %s, %s, %s, %s) WHERE id = %s"
+    values = [client.first_name, client.last_name, client.phone_number, client.address, client.registered, client.vet.id, client.id]
+    run_sql(sql, values)
+
 # Select pets of client(id)
