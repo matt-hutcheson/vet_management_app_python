@@ -27,7 +27,8 @@ def new_patient_get_client():
 def new_patient():
     selected_client = client_repository.select(request.form["client-name"])
     clients = client_repository.select_all()
-    return render_template('patients/new.html', selected_client=selected_client, all_clients=clients)
+    vets = vet_repository.select_all()
+    return render_template('patients/new.html', selected_client=selected_client, all_clients=clients, all_vets=vets)
 
 # CREATE
 

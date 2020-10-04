@@ -2,7 +2,7 @@
 
 {% block main %}
 
-<form action="" method="POST">
+<form action="/patients" method="POST">
     <ul>
         <li>
             <label for="patient-name">Name</label>
@@ -24,6 +24,40 @@
                 <option value="{{ client.id}}" {% if client.id == selected_client.id %} selected {% endif %}>{{ client.first_name }} {{ client.last_name }}</option>
                 {% endfor %}
             </select>
+        </li>
+        <li>
+            <label for="vet-name">Vet Name</label>
+            <select name="vet-name" id="vet-name" required>
+                <option value="" disabled="True" selected>--Choose Vet--</option>
+                {% for vet in all_vets %}
+                <option value="{{ vet.id }}">{{ vet.first_name }} {{ vet.last_name }}</option>
+                {% endfor %}
+            </select>
+        </li>
+        <li>
+            <label for="dob">Date of Birth</label>
+            <input type="text" name="dob" id="dob" value="DD/MM/YYYY" onClick="this.select();" required>
+        </li>
+        <li>
+            <label for="gender">Gender</label>
+            <input type="radio" name="gender" id="M" value="Male" checked>
+            <label for="M">Male</label>
+            <input type="radio" name="gender" id="F" value="Female">
+            <label for="F">Female</label>
+        </li>
+        <li>
+            <label for="status">Status</label>
+            <input type="radio" name="status" id="alive" value="Alive" selected>
+            <label for="alive">Alive</label>
+            <input type="radio" name="status" id="dead" value="Dead">
+            <label for="dead">Dead</label>
+            <input type="radio" name="status" id="lost" value="Lost">
+            <label for="lost">Lost</label>
+            <input type="radio" name="status" id="sold" value="Sold">
+            <label for="sold">Sold</label>
+        </li>
+        <li>
+            <input type="submit" value="Create">
         </li>
     </ul>
 </form>

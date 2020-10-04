@@ -30,7 +30,10 @@ def create_client():
     last_name = request.form['last-name']
     phone_number = request.form['phone-number'].replace(" ", "")
     address = request.form['address']
-    registered = request.form['registered']
+    if request.form['registered'] == "N":
+        registered = False
+    elif request.form['registered'] == "Y":
+        registered = True
     vet_id = request.form['vet-assigned']
     vet = vet_repository.select(vet_id)
     client = Client(first_name, last_name,phone_number, address, registered, vet)
@@ -51,7 +54,10 @@ def update_client(id):
     last_name = request.form['last-name']
     phone_number = request.form['phone-number'].replace(" ", "")
     address = request.form['address']
-    registered = request.form['registered']
+    if request.form['registered'] == "N":
+        registered = False
+    elif request.form['registered'] == "Y":
+        registered = True
     vet_id = request.form['vet-assigned']
     vet = vet_repository.select(vet_id)
     client = Client(first_name, last_name,phone_number, address, registered, vet, id)
