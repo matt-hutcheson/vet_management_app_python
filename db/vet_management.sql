@@ -1,7 +1,8 @@
 DROP TABLE if exists treatments;
 DROP TABLE if exists patients;
-DROP TABLE if exists vets;
 DROP TABLE if exists clients;
+DROP TABLE if exists vets;
+
 
 
 CREATE TABLE vets (
@@ -27,7 +28,7 @@ CREATE TABLE patients (
     dob VARCHAR(255),
     type VARCHAR(255),
     breed VARCHAR(255),
-    gender BOOLEAN,
+    gender VARCHAR(1),
     status VARCHAR(255),
     check_in_date VARCHAR(255),
     check_out_date VARCHAR(255),

@@ -2,9 +2,11 @@ import pdb
 
 from models.src.vet import Vet
 from models.src.client import Client
+from models.src.patient import Patient
 
 import repositories.vet_repository as vet_repository
 import repositories.client_repository as client_repository
+import repositories.patient_repository as patient_repository
 
 client_repository.delete_all()
 vet_repository.delete_all()
@@ -36,5 +38,13 @@ selected_client = client_repository.select(vet_list[0].id)
 client_1.first_name = "Jim"
 client_repository.update(client_1)
 client_list = client_repository.select_all()
+
+# Patient repo tests
+patient_1 = Patient("Rex", "12/09/2019", "Dog", "Bulldog", "M", "Alive", vet_1, client_1, "03/10/2020", "10/10/2020")
+patient_2 = Patient("Felix", "21/04/2016", "Cat", "British Shorthair", "F", "Alive", vet_2, client_2, "04/10/2020", "09/10/2020")
+patient_3 = Patient("Tiger", "01/08/2018", "Cat", "Bengal", "M", "Alive", vet_2, client_2, "02/10/2020", "11/10/2020")
+patient_repository.save(patient_1)
+patient_repository.save(patient_2)
+patient_repository.save(patient_3)
 
 pdb.set_trace()
