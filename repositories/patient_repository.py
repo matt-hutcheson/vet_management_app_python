@@ -29,3 +29,14 @@ def select_all():
             patient = Patient(row['name'], row['dob'], row['type'], row['breed'], row['gender'], row['status'], vet, client, row['check_in_date'], row['check_out_date'], row['id'])
             patients.append(patient)
     return patients
+
+def select(id):
+    sql = "SELECT * FROM patients WHERE id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+    if results is not None:
+        result = results[0]
+        vet = vet_repository.select(result['vet_id'])
+        client = client_repository.select(result['client_id'])
+        patient = Patient(result['name'], result['dob'], result['type'], result['breed'], result['gender'], result['status'], vet, client, result['check_in_date'], result['check_out_date'], result['id'])
+    return patient
