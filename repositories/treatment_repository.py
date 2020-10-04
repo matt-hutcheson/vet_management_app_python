@@ -43,3 +43,8 @@ def select(id):
         vet = vet_repository.select(result['vet_id'])
         treatment = Treatment(result['notes'], result['date'], patient, vet, result['id'])
     return treatment
+
+def delete(id):
+    sql = "DELETE FROM treatments WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
