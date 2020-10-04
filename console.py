@@ -62,11 +62,12 @@ treatment_1 = Treatment("X-ray done on front left leg following car collision. R
 treatment_2 = Treatment("Patient arrived with severe dehydration and heatstroke due to heatwave. Put in ice bath and on fluids and keeping overnight to monitor progress.", "03/10/2020", patient_2, vet_2)
 treatment_3 = Treatment("Prepared patient for abdominable surgery following foreign object injestion.", "01/10/2020", patient_3, vet_1)
 treatment_4 = Treatment("Patient underwent abdominal surgery and foreign object causing distress was successfully removed. Patient moved to intensive care for overnight observation", "02/10/2020", patient_3, vet_1)
-treatment_repository.save(treatment_1)
-treatment_repository.save(treatment_2)
-treatment_repository.save(treatment_3)
-treatment_repository.save(treatment_4)
+treatment_1 = treatment_repository.save(treatment_1)
+treatment_2 = treatment_repository.save(treatment_2)
+treatment_3 = treatment_repository.save(treatment_3)
+treatment_4 = treatment_repository.save(treatment_4)
 
 treatment_list_patient_3 = treatment_repository.select_all(patient_3.id)
+selected_treatment = treatment_repository.select(treatment_4.id)
 
 pdb.set_trace()

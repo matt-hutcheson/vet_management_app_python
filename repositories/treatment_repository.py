@@ -32,3 +32,14 @@ def select_all(patient_id):
             treatment = Treatment(row['notes'], row['date'], patient, vet, row['id'])
             treatments.append(treatment)
     return treatments
+
+def select(id):
+    sql = "SELECT * FROM treatments WHERE id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+    if results is not None:
+        result = results[0]
+        patient = patient_repository.select(result['patient_id'])
+        vet = vet_repository.select(result['vet_id'])
+        treatment = Treatment(result['notes'], result['date'], patient, vet, result['id'])
+    return treatment
