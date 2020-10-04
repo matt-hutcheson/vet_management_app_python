@@ -16,19 +16,19 @@
         </li>
         <li>
             <label for="phone-number">Phone Number</label>
-            <input type="text" name="phone-number" id="phone-number" value={{ client.phone_number }} required>
+            <input type="text" name="phone-number" id="phone-number" value="{{ client.phone_number[0:5] }} {{ client.phone_number[5:8] }} {{ client.phone_number[8:] }}" required>
         </li>
         <li>
             <label for="address">Address</label>
-            <input type="text" name="address" id="address" value={{ client.address }} required>
+            <input type="text" name="address" id="address" value="{{ client.address }}" required>
         </li>
         <li>
             <label for="vet-assigned">Vet Assigned</label>
 
                 <select name="vet-assigned" id="vet-assigned">
-                    <option value="choose" disabled="True" selected="True">--Select Vet--</option>
+                    <option value="choose" disabled="True">--Select Vet--</option>
                     {% for vet in all_vets %}
-                        <option value="{{ vet.id }}">{{ vet.first_name }} {{ vet.last_name }} {% if vet.id == client.vet.id %} selected {% endif %} </option>
+                    <option value="{{ vet.id }}" {% if vet.id == client.vet.id %} selected {% endif %}>{{ vet.first_name }} {{ vet.last_name }} </option>
                     {% endfor %}
                 </select>
         </li>
@@ -37,7 +37,7 @@
             <label for="registered">Registered?</label>
             <input type="radio" name="registered" id="false" value="N" {% if client.registered == "N" %} checked {% endif %}>
             <label for="false">N</label>
-            <input type="radio" name="registered" id="true" value="Y" {% if client.registered == "Y" %} checked {% endig %}>
+            <input type="radio" name="registered" id="true" value="Y" {% if client.registered == "Y" %} checked {% endif %}>
             <label for="true">Y</label>
         </li>
     </ul>

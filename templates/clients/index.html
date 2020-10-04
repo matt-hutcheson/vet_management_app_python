@@ -35,7 +35,7 @@
         {% endfor %}
     </li> -->
     <li>
-        {{ client.phone_number }}
+        {{ client.phone_number[0:5] }} {{ client.phone_number[5:8] }} {{ client.phone_number[8:] }}
     </li>
     <li>
         {{ client.address }}

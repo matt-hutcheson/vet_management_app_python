@@ -28,16 +28,20 @@ def new_client():
 def create_client():
     first_name = request.form['first-name']
     last_name = request.form['last-name']
-    phone_number = request.form['phone-number']
+    phone_number = request.form['phone-number'].replace(" ", "")
     address = request.form['address']
     registered = request.form['registered']
-    vet_id = request.form['vet-id']
+    vet_id = request.form['vet-assigned']
     vet = vet_repository.select(vet_id)
     client = Client(first_name, last_name,phone_number, address, registered, vet)
     client_repository.save(client)
     return redirect('/clients')
 
 # EDIT
-
+@clients_blueprint.route("/clients/<id>/edit", methods=["GET"])
+def edit_client(id):
+    client = client_repository.select(id)
+    vets = vet_repository.select_all()
+    return render_template('/clients/edit.html', client=client, all_vets=vets)
 
 # UPDATE
