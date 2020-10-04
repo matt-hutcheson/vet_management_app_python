@@ -29,11 +29,11 @@
     <li>
         {{ client.first_name}} {{ client.last_name}}
     </li>
-    <li>
+    <!-- <li>
         {% for pet in pets %}
             <a href="/pet/<{{ pet.id }}>/edit"></a>{{ pet.name }}
         {% endfor %}
-    </li>
+    </li> -->
     <li>
         {{ client.phone_number }}
     </li>
@@ -44,7 +44,7 @@
         {{ client.registered }}
     </li>
     <li>
-        {{ vet.name }}
+        {{ client.vet.first_name }} {{ client.vet.last_name}}
     </li>
     <li>
         <form action="/clients/{{ client.id }}/all-pets" method="get">

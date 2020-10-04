@@ -17,8 +17,4 @@ def clients():
     vets = []
     pets = []
     clients = client_repository.select_all()
-    for client in clients:
-        vet = vet_repository.select(client.vet_id)
-        vets.append(vet)
-        # add code for patients of client once written
-    return render_template('/clients/index.html', all_clients=clients, vets=vets, pets=pets)
+    return render_template('/clients/index.html', all_clients=clients)

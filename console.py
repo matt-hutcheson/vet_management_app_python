@@ -22,8 +22,8 @@ vet_repository.update(vet_1)
 vet_list = vet_repository.select_all()
 
 # Client repo tests
-client_1 = Client("James", "McBean", "07666 666 666", "Baberton Mains Row, Edinburgh, EH12 1LS", True, vet_1.id)
-client_2 = Client("Daniel", "Jackson", "07888 888 888", "Duke Street, Glasgow, G5 2FH", False, vet_2.id)
+client_1 = Client("James", "McBean", "07666 666 666", "Baberton Mains Row, Edinburgh, EH12 1LS", True, vet_1)
+client_2 = Client("Daniel", "Jackson", "07888 888 888", "Duke Street, Glasgow, G5 2FH", False, vet_2)
 client_repository.save(client_1)
 client_repository.save(client_2)
 
