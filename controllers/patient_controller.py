@@ -83,3 +83,7 @@ def update_patient(id):
     return redirect('/patients')
 
 # DELETE
+@patients_blueprint.route('/patients/<id>/delete', methods=["POST"])
+def delete_patient(id):
+    patient_repository.delete(id)
+    return redirect('/patients')
