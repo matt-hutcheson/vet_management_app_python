@@ -49,5 +49,7 @@ patient_repository.save(patient_2)
 patient_repository.save(patient_3)
 patient_list = patient_repository.select_all()
 selected_patient = patient_repository.select(patient_list[0].id)
+# patient_repository.delete(patient_list[1].id)
+patient_list = patient_repository.select_all()
 
 pdb.set_trace()

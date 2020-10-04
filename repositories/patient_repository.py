@@ -40,3 +40,9 @@ def select(id):
         client = client_repository.select(result['client_id'])
         patient = Patient(result['name'], result['dob'], result['type'], result['breed'], result['gender'], result['status'], vet, client, result['check_in_date'], result['check_out_date'], result['id'])
     return patient
+
+def delete(id):
+    sql = "DELETE FROM patients WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
+
