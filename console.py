@@ -10,6 +10,7 @@ import repositories.client_repository as client_repository
 import repositories.patient_repository as patient_repository
 import repositories.treatment_repository as treatment_repository
 
+treatment_repository.delete_all()
 patient_repository.delete_all()
 client_repository.delete_all()
 vet_repository.delete_all()
@@ -63,4 +64,6 @@ treatment_3 = Treatment("Prepared patient for abdominable surgery following fore
 treatment_repository.save(treatment_1)
 treatment_repository.save(treatment_2)
 treatment_repository.save(treatment_3)
+
+
 pdb.set_trace()

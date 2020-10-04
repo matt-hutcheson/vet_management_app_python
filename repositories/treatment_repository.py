@@ -16,3 +16,6 @@ def save(treatment):
         treatment.id = result['id']
     return treatment
 
+def delete_all():
+    sql = "DELETE FROM treatments"
+    run_sql(sql)
