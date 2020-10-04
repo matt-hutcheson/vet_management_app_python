@@ -39,5 +39,7 @@ CREATE TABLE patients (
 CREATE TABLE treatments (
     id SERIAL PRIMARY KEY,
     notes TEXT,
-    patient_id INT REFERENCES patients(id) ON DELETE CASCADE
+    date VARCHAR(20),
+    patient_id INT REFERENCES patients(id) ON DELETE CASCADE,
+    vet_id INT REFERENCES vets(id) ON DELETE CASCADE
 );
