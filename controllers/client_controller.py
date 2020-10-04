@@ -18,12 +18,13 @@ def clients():
     return render_template('/clients/index.html', all_clients=clients)
 
 #  NEW
-@clients_blueprint.route("clients/new")
+@clients_blueprint.route("/clients/new")
 def new_client():
-    return render_template('clients/new.html')
+    vets = vet_repository.select_all()
+    return render_template('clients/new.html', all_vets = vets)
 
 # CREATE
-@clients_blueprint.route("clients", methods=["POST"])
+@clients_blueprint.route("/clients", methods=["POST"])
 def create_client():
     first_name = request.form['first-name']
     last_name = request.form['last-name']
@@ -37,5 +38,6 @@ def create_client():
     return redirect('/clients')
 
 # EDIT
+
 
 # UPDATE
