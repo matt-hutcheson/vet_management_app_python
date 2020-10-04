@@ -32,5 +32,6 @@ client_list = client_repository.select_all()
 client_1 = client_repository.select(client_list[0].id)
 client_2 = client_repository.select(client_list[1].id)
 selected_client = client_repository.select(vet_list[0].id)
+# client_repository.delete(client_1.id)
 
 pdb.set_trace()
