@@ -31,6 +31,21 @@ def new_patient():
     return render_template('patients/new.html', selected_client=selected_client, all_clients=clients, all_vets=vets)
 
 # CREATE
+@patients_blueprint.route('/patients', methods=["POST"])
+def create_patient():
+    name = request.form['name']
+    type = request.form['type']
+    breed = request.form['breed']
+    client_id = request.form['client-name']
+    client = client_repository.select(client_id)
+    vet_id = request.form['vet-name']
+    vet = vet_repository.select(vet_id)
+    dob = request.form['dob']
+    gender = request.form['gender']
+    status = request.form['status']
+    patient = Patient(name, dob, type, breed, gender, status, vet, client)
+    patient_repository.save(patient)
+    return redirect('/patients')
 
 # EDIT
 

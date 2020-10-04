@@ -9,7 +9,7 @@
             <select name="client-name" id="client-name" required>
                 <option value="" disabled="True" selected>--Select Client</option>
                 {% for client in all_clients %}
-                <option value="{{ client.id}}">{{ client.first_name }} {{ client.last_name }}</option>
+                <option value="{{ client.id}}" {% if client.registered == False %} disabled="True" {% endif %}>{{ client.first_name }} {{ client.last_name }} {% if client.registered == False %} -- Unregistered {% endif %}</option>
                 {% endfor %}
             </select>
         </li>
