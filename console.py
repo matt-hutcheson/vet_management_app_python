@@ -47,5 +47,6 @@ patient_3 = Patient("Tiger", "01/08/2018", "Cat", "Bengal", "M", "Alive", vet_2,
 patient_repository.save(patient_1)
 patient_repository.save(patient_2)
 patient_repository.save(patient_3)
+patient_list = patient_repository.select_all()
 
 pdb.set_trace()

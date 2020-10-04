@@ -18,3 +18,14 @@ def delete_all():
     sql = "DELETE FROM patients"
     run_sql(sql)
 
+def select_all():
+    patients = []
+    sql = "SELECT * FROM patients"
+    results = run_sql(sql)
+    if results is not None:
+        for row in results:
+            vet = vet_repository.select(row['vet_id'])
+            client = client_repository.select(row['client_id'])
+            patient = Patient(row['name'], row['dob'], row['type'], row['breed'], row['gender'], row['status'], vet, client, row['check_in_date'], row['check_out_date'], row['id'])
+            patients.append(patient)
+    return patients
