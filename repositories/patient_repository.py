@@ -13,3 +13,8 @@ def save(patient):
         patient.client = client_repository.select(results[0]['client_id'])
         patient.vet = vet_repository.select(results[0]['vet_id'])
     return patient
+
+def delete_all():
+    sql = "DELETE FROM patients"
+    run_sql(sql)
+

@@ -8,6 +8,7 @@ import repositories.vet_repository as vet_repository
 import repositories.client_repository as client_repository
 import repositories.patient_repository as patient_repository
 
+patient_repository.delete_all()
 client_repository.delete_all()
 vet_repository.delete_all()
 
