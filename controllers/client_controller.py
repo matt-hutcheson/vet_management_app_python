@@ -45,3 +45,15 @@ def edit_client(id):
     return render_template('/clients/edit.html', client=client, all_vets=vets)
 
 # UPDATE
+@clients_blueprint.route("/clients/<id>", methods=["POST"])
+def update_client(id):
+    first_name = request.form['first-name']
+    last_name = request.form['last-name']
+    phone_number = request.form['phone-number'].replace(" ", "")
+    address = request.form['address']
+    registered = request.form['registered']
+    vet_id = request.form['vet-assigned']
+    vet = vet_repository.select(vet_id)
+    client = Client(first_name, last_name,phone_number, address, registered, vet, id)
+    client_repository.update(client)
+    return redirect('/clients')

@@ -35,10 +35,13 @@
         <!-- Insert pets container here -->
         <li>
             <label for="registered">Registered?</label>
-            <input type="radio" name="registered" id="false" value="N" {% if client.registered == "N" %} checked {% endif %}>
+            <input type="radio" name="registered" id="false" value="N" {% if client.registered == False %} checked {% endif %}>
             <label for="false">N</label>
-            <input type="radio" name="registered" id="true" value="Y" {% if client.registered == "Y" %} checked {% endif %}>
+            <input type="radio" name="registered" id="true" value="Y" {% if client.registered == True %} checked {% endif %}>
             <label for="true">Y</label>
+        </li>
+        <li>
+            <input type="submit" value="Update">
         </li>
     </ul>
 </form>
