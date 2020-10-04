@@ -28,7 +28,9 @@ client_1 = Client("James", "McBean", "07666 666 666", "Baberton Mains Row, Edinb
 client_2 = Client("Daniel", "Jackson", "07888 888 888", "Duke Street, Glasgow, G5 2FH", False, vet_2)
 client_repository.save(client_1)
 client_repository.save(client_2)
-
 client_list = client_repository.select_all()
+client_1 = client_repository.select(client_list[0].id)
+client_2 = client_repository.select(client_list[1].id)
+selected_client = client_repository.select(vet_list[0].id)
 
 pdb.set_trace()

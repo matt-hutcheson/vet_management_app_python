@@ -38,4 +38,9 @@ def select(id):
         client = Client(result['first_name'], result['last_name'], result['phone_number'], result['address'], result['registered'], vet, result['id'])
     return client
 
+def delete(id):
+    sql = "DELETE FROM clients WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
+
 # Select pets of client(id)
