@@ -11,7 +11,21 @@ import repositories.vet_repository as vet_repository
 
 patients_blueprint = Blueprint("patients", __name__)
 
+# INDEX
 @patients_blueprint.route('/patients')
 def patients():
     patients = patient_repository.select_all()
     return render_template('patients/index.html', all_patients = patients)
+
+# NEW
+@patients_blueprint.route('patients/new')
+def new_patient():
+    return render_template('patients/new.html')
+
+# CREATE
+
+# EDIT
+
+# UPDATE
+
+# DELETE
