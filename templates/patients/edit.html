@@ -57,13 +57,13 @@
         </li>
         <li>
             <label for="status">Status</label>
-            <input type="radio" name="status" id="alive" value="Alive" {% if patient.status == "Alive" %} selected {% endif %}>
+            <input type="radio" name="status" id="alive" value="Alive" {% if patient.status == "Alive" %} checked {% endif %}>
             <label for="alive">Alive</label>
-            <input type="radio" name="status" id="dead" value="Dead" {% if patient.status == "Dead" %} selected {% endif %}>
+            <input type="radio" name="status" id="dead" value="Dead" {% if patient.status == "Dead" %} checked {% endif %}>
             <label for="dead">Dead</label>
-            <input type="radio" name="status" id="lost" value="Lost" {% if patient.status == "Lost" %} selected {% endif %}>
+            <input type="radio" name="status" id="lost" value="Lost" {% if patient.status == "Lost" %} checked {% endif %}>
             <label for="lost">Lost</label>
-            <input type="radio" name="status" id="sold" value="Sold" {% if patient.status == "Sold" %} selected {% endif %}>
+            <input type="radio" name="status" id="sold" value="Sold" {% if patient.status == "Sold" %} checked {% endif %}>
             <label for="sold">Sold</label>
         </li>
         <li>

@@ -53,6 +53,12 @@ def create_patient():
     return redirect('/patients')
 
 # EDIT
+@patients_blueprint.route('/patients/<id>/edit', methods=["GET"])
+def edit_patient(id):
+    patient = patient_repository.select(id)
+    clients = client_repository.select_all()
+    vets = vet_repository.select_all()
+    return render_template('/patients/edit.html', patient=patient, all_clients=clients, all_vets=vets)
 
 # UPDATE
 
