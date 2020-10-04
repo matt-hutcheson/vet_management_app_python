@@ -30,7 +30,7 @@
             <label for="vet-job-title">Job Title</label>
         </li>
         <li>
-            <select name="job-title" id="job-title">
+            <select name="job-title" id="job-title" required>
                 <option value="graduate" {% if vet.job_title == "Graduate" %} selected {% endif %}>Graduate</option>
                 <option value="junior" {% if vet.job_title == "Junior" %} selected {% endif %}>Junior</option>
                 <option value="senior" {% if vet.job_title == "Senior" %} selected {% endif %}>Senior</option>
@@ -39,8 +39,6 @@
         </li>
         <li>
             <label for="vet-id">ID</label>
-        </li>
-        <li>
             <input type="text" name="id" id="id" value={{ vet.id }} readonly>
         </li>
         <li>

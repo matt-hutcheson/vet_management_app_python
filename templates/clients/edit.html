@@ -26,7 +26,7 @@
             <label for="vet-assigned">Vet Assigned</label>
 
                 <select name="vet-assigned" id="vet-assigned">
-                    <option value="choose" disabled="True">--Select Vet--</option>
+                    <option value="" disabled="True" required>--Select Vet--</option>
                     {% for vet in all_vets %}
                     <option value="{{ vet.id }}" {% if vet.id == client.vet.id %} selected {% endif %}>{{ vet.first_name }} {{ vet.last_name }} </option>
                     {% endfor %}

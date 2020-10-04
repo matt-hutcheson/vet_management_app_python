@@ -18,10 +18,10 @@ def patients():
     return render_template('patients/index.html', all_patients = patients)
 
 # NEW
-@patients_blueprint.route('patients/new', methods=["POST"])
+@patients_blueprint.route('/patients/new', methods=["GET"])
 def new_patient_get_client():
     clients = client_repository.select_all()
-    return render_template('patients/select-client.html', all_clients=clients)
+    return render_template('patients/select_client.html', all_clients=clients)
 
 @patients_blueprint.route('/patients/client-select')
 def new_patient():

@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+
+{% block main %}
+
+<form action="/patients/select-client" method="POST">
+    <ul>
+        <li>
+            <label for="client-name">Select Client</label>
+            <select name="client-name" id="client-name" required>
+                <option value="" disabled="True" selected>--Select Client</option>
+                {% for client in all_clients %}
+                <option value="{{ client.id}}">{{ client.first_name }} {{ client.last_name }}</option>
+                {% endfor %}
+            </select>
+        </li>
+        <li>
+            <input type="submit" value="Select Client">
+        </li>
+    </ul>
+</form>
+
+<form action="/clients/new" method="get">
+    <input type="submit" value="Create New Client">
+</form>
+{% endblock %}

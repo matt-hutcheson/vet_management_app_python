@@ -25,8 +25,8 @@
         <li>
             <label for="vet-assigned">Vet Assigned</label>
 
-                <select name="vet-assigned" id="vet-assigned">
-                    <option value="choose" disabled="True" selected="True">--Select Vet--</option>
+                <select name="vet-assigned" id="vet-assigned" required>
+                    <option value="" disabled="True" selected="True">--Select Vet--</option>
                     {% for vet in all_vets %}
                         <option value="{{ vet.id }}">{{ vet.first_name }} {{ vet.last_name }}</option>
                     {% endfor %}
