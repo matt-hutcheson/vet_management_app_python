@@ -1,0 +1,75 @@
+{% extends 'index.html' %}
+
+{% block main %}
+
+<h2>Edit {{ patient.name }}</h2>
+
+<form action="/patients/{{ patient.id }}" method="POST">
+    <ul>
+        <li>
+            <label for="patient-name">Name</label>
+            <input type="text" name="name" id="patient-name" value="{{ patient.name }}" required>
+        </li>
+        <li>
+            <label for="type">Type</label>
+            <input type="text" name="type" id="type" value="{{ patient.type }}" required>
+        </li>
+        <li>
+            <label for="breed">Breed</label>
+            <input type="text" name="breed" id="breed" value="{{ patient.breed }}" required>
+        </li>
+        <li>
+            <label for="client-name">Client Name</label>
+            <select name="client-name" id="client-name" required>
+                <option value="" disabled="True" >--Choose Client--</option>
+                {% for client in all_clients %}
+                <option value="{{ client.id}}" {% if client.id == patient.client.id %} selected {% endif %}>{{ client.first_name }} {{ client.last_name }}</option>
+                {% endfor %}
+            </select>
+        </li>
+        <li>
+            <label for="vet-name">Vet Name</label>
+            <select name="vet-name" id="vet-name" required>
+                <option value="" disabled="True" selected>--Choose Vet--</option>
+                {% for vet in all_vets %}
+                <option value="{{ vet.id }}" {% if vet.id == patient.vet.id %} selected {% endif %}>{{ vet.first_name }} {{ vet.last_name }}</option>
+                {% endfor %}
+            </select>
+        </li>
+        <li>
+            <label for="check-in">Check-in Date</label>
+            <input type="text" name="check-in" id="check-in" value="{{ patient.check_in_date }}" onclick="this.select();">
+        </li>
+        <li>
+            <label for="check-out">Check-out Date</label>
+            <input type="text" name="check-out" id="check-out" value="{{ patient.check_out_date }}" onclick="this.select();">
+        </li>
+        <li>
+            <label for="dob">Date of Birth</label>
+            <input type="text" name="dob" id="dob" value="{{ patient.dob }}" onClick="this.select();" required>
+        </li>
+        <li>
+            <label for="gender">Gender</label>
+            <input type="radio" name="gender" id="M" value="Male" {% if patient.gender == "M" %} checked {% endif %}>
+            <label for="M">Male</label>
+            <input type="radio" name="gender" id="F" value="Female" {% if patient.gender == "F" %} checked {% endif %}>
+            <label for="F">Female</label>
+        </li>
+        <li>
+            <label for="status">Status</label>
+            <input type="radio" name="status" id="alive" value="Alive" {% if patient.status == "Alive" %} selected {% endif %}>
+            <label for="alive">Alive</label>
+            <input type="radio" name="status" id="dead" value="Dead" {% if patient.status == "Dead" %} selected {% endif %}>
+            <label for="dead">Dead</label>
+            <input type="radio" name="status" id="lost" value="Lost" {% if patient.status == "Lost" %} selected {% endif %}>
+            <label for="lost">Lost</label>
+            <input type="radio" name="status" id="sold" value="Sold" {% if patient.status == "Sold" %} selected {% endif %}>
+            <label for="sold">Sold</label>
+        </li>
+        <li>
+            <input type="submit" value="Update">
+        </li>
+    </ul>
+</form>
+
+{% endblock %}
