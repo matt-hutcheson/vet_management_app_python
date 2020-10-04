@@ -11,6 +11,7 @@ class Patient():
         self.id =id
         self.vet= vet
         self.client = client
+        # self.treatments = []
 
     # def dob to age()
 

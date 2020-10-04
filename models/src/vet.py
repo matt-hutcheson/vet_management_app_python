@@ -4,4 +4,6 @@ class Vet():
         self.last_name = last_name
         self.job_title = job_title
         self.id = id
+        # self.clients = []
+        # self.patient = []
         
