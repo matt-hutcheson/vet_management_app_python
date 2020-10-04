@@ -17,7 +17,8 @@ CREATE TABLE clients (
     last_name VARCHAR(255),
     phone_number VARCHAR(255),
     address TEXT,
-    registered BOOLEAN
+    registered BOOLEAN,
+    vet_id INT REFERENCES vets(id) ON DELETE CASCADE
 );
 
 CREATE TABLE patients (
