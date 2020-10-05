@@ -20,6 +20,11 @@ def treatments(patient_id):
     return render_template('/treatments/index.html', all_treatments=treatments, selected_patient=patient)
 
 # NEW
+@treatments_blueprint.route('/treatments/<patient_id>/new')
+def new_treatment(patient_id):
+    patient = patient_repository.select(patient_id)
+    vets = vet_repository.select_all()
+    return render_template('/treatments/new.html', selected_patient=patient, all_vets=vets)
 
 # CREATE
 

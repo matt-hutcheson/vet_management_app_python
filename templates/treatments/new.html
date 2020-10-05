@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+
+{% block main %}
+
+<h2>Add Treatment to {{ selected_patient.name }}</h2>
+
+<form action="/treatments/{{ selected_patient.id }}/new" method="post">
+    <ul>
+        <li>
+            <label for="patient-name">Patient Name</label>
+            <input type="text" name="patient-name" id="patient-name" disabled="True">
+        </li>
+        <li>
+            <label for="vet-name">Vet Name</label>
+            <select name="vet-name" id="vet-name">
+                <option value="vet-name" disabled="True">--Select Vet--</option>
+                {% for vet in all_vets %}
+                <option value="vet-name" {% if selected_patient.vet.id = vet.id %} selected {% endif %}>{{ vet.first_name }} {{ vet.last_name }}</option>
+                {% endfor %}
+            </select>
+        </li>
+        <li>
+            <label for="date">Date</label>
+            <input type="text" name="date" id="date" value="DD/MM/YYYY" onclick="this.select();">
+        </li>
+        <li>
+            <label for="notes">Treatment Notes</label>
+            <textarea name="notes" id="notes" cols="30" rows="10"></textarea>
+        </li>
+        <li>
+            <input type="submit" value="Create">
+        </li>
+    </ul>
+</form>
+
+{% endblock %}
+
