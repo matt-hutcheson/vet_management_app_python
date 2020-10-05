@@ -5,6 +5,7 @@ from models.src.vet import Vet
 
 import repositories.vet_repository as vet_repository
 import repositories.patient_repository as patient_repository
+import repositories.client_repository as client_repository
 
 vets_blueprint = Blueprint("vets", __name__)
 
@@ -20,6 +21,11 @@ def vet_patients(vet_id):
     patients = vet_repository.select_patients(vet_id)
     vet = vet_repository.select(vet_id)
     return render_template("vets/index_patients.html", all_patients=patients, vet=vet)
+
+# INDEX CLIENTS OF VET
+@vets_blueprint.route("/vets/<vet_id>/clients")
+def vet_clients(vet_id):
+    clients = vet_repository.select_clients(vet_id)
 
 #  NEW
 @vets_blueprint.route("/vets/new")

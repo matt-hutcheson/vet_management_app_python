@@ -2,6 +2,7 @@ from db.run_sql import run_sql
 
 from models.src.vet import Vet
 from models.src.patient import Patient
+from models.src.client import Client
 
 import repositories.client_repository as client_repository
 
@@ -48,6 +49,18 @@ def select_patients(vet_id):
             patient = Patient(row['name'], row['dob'], row['type'], row['breed'], row['gender'], row['status'], vet, client, row['check_in_date'], row['check_out_date'], row['id'])
             patients.append(patient)
     return patients
+
+def select_clients(vet_id):
+    clients = []
+    sql = "SELECT * FROM clients WHERE vet_id = %s"
+    values = [vet_id]
+    results = run_sql(sql, values)
+    if results is not None:
+        for row in results:
+            vet = select(vet_id)
+            client = Client(row['first_name'], row['last_name'], row['phone_number'], row['address'], row['registered'], vet, row['id'])
+            clients.append(client)
+    return clients
 
 def delete(id):
     sql = "DELETE FROM vets WHERE id = %s"
