@@ -8,3 +8,6 @@ class TestDateChanger(unittest.TestCase):
 
     def test_date_to_date_box(self):
         self.assertEqual("2020-08-01", date_to_date_box("01/08/2020"))
+
+    def test_date_to_age(self):
+        self.assertEqual(3, date_to_age("19/08/2017"))
