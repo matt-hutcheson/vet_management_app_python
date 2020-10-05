@@ -74,7 +74,7 @@ def update_patient(id):
     client = client_repository.select(client_id)
     vet_id = request.form['vet-name']
     vet = vet_repository.select(vet_id)
-    dob = date_to_date_box(request.form['dob'])
+    dob = date_box_to_date(request.form['dob'])
     if request.form['gender'] == "Male":
         gender = "M"
     elif request.form['gender'] == "Female":

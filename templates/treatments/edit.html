@@ -21,7 +21,7 @@
         </li>
         <li>
             <label for="date">Date</label>
-            <input type="text" name="date" id="date" value="{{ treatment.date }}" onclick="this.select();">
+            <input type="date" name="date" id="date" value="{{ date }}" min="1000-01-01" max="3000-01-01">
         </li>
         <li>
             <label for="notes">Treatment Notes</label>

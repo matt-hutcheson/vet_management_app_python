@@ -5,6 +5,7 @@ from flask import Blueprint
 from models.src.treatment import Treatment
 from models.src.patient import Patient
 from models.src.vet import Vet
+from models.src.date_changer import *
 
 import repositories.treatment_repository as treatment_repository
 import repositories.patient_repository as patient_repository
@@ -32,7 +33,7 @@ def create_treatment(patient_id):
     patient_id = patient_id
     print(patient_id)
     vet_id = request.form['vet-name']
-    date = request.form['date']
+    date = date_box_to_date(request.form['date'])
     notes = request.form['notes']
     patient = patient_repository.select(patient_id)
     vet = vet_repository.select(vet_id)
@@ -45,7 +46,8 @@ def create_treatment(patient_id):
 def edit_treatment(patient_id, treatment_id):
     treatment = treatment_repository.select(treatment_id)
     vets = vet_repository.select_all()
-    return render_template('/treatments/edit.html', treatment=treatment, all_vets=vets)
+    date = date_to_date_box(treatment.date)
+    return render_template('/treatments/edit.html', treatment=treatment, all_vets=vets, date=date)
 
 # UPDATE
 @treatments_blueprint.route('/treatments/<patient_id>/<treatment_id>', methods=['POST'])
@@ -53,7 +55,7 @@ def update_treatment(patient_id, treatment_id):
     patient = patient_repository.select(patient_id)
     vet_id = request.form['vet-name']
     vet = vet_repository.select(vet_id)
-    date = request.form['date']
+    date = date_box_to_date(request.form['date'])
     notes = request.form['notes']
     treatment = Treatment(notes, date, patient, vet, treatment_id)
     treatment_repository.update(treatment)
