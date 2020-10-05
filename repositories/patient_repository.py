@@ -51,5 +51,3 @@ def update(patient):
     sql = "UPDATE patients SET (name, dob, type, breed, gender, status, check_in_date, check_out_date, client_id, vet_id) = (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s) WHERE id = %s"
     values = [patient.name, patient.dob, patient.type, patient.breed, patient.gender, patient.status, patient.check_in_date, patient.check_out_date, patient.client.id, patient.vet.id, patient.id]
     run_sql(sql, values)
-
-# Update to select all treatments
