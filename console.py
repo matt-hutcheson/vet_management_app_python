@@ -65,7 +65,7 @@ treatment_4 = treatment_repository.save(treatment_4)
 
 treatment_list_patient_3 = treatment_repository.select_all(patient_3.id)
 selected_treatment = treatment_repository.select(treatment_4.id)
-treatment_repository.delete(treatment_3.id)
+# treatment_repository.delete(treatment_3.id)
 treatment_list_patient_3 = treatment_repository.select_all(patient_3.id)
 treatment_1.date = "30/09/2020"
 treatment_repository.update(treatment_1)

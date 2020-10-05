@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+
+{% block main %}
+
+<h2>{{ selected_patient.name }} Treatment History</h2>
+
+<form action="/treatments/{{ selected_patient.id }}/new" method="get">
+    <input type="submit" value="Add New Treatment">
+</form>
+
+{% for treatment in all_treatments %}
+
+<ul>
+    <li>
+        {{ treatment.vet.first_name }} {{ treatment.vet.last_name }}
+    </li>
+    <li>
+        {{ treatment.date }}
+    </li>
+    <li>
+        {{ treatment.notes }}
+    </li>
+    <li>
+        <form action="/treatments/{{ treatment.id }}/edit" method="get">
+            <input type="submit" value="Edit">
+        </form>
+    </li>
+    <li>
+        <form action="/treatments/{{ treatment.id }}/delete" method="post">
+            <input type="submit" value="Delete">
+        </form>
+    </li>
+</ul>
+
+{% endfor %}
+
+{% endblock %}
