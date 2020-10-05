@@ -74,14 +74,14 @@ def update_patient(id):
     client = client_repository.select(client_id)
     vet_id = request.form['vet-name']
     vet = vet_repository.select(vet_id)
-    dob = request.form['dob']
+    dob = date_to_date_box(request.form['dob'])
     if request.form['gender'] == "Male":
         gender = "M"
     elif request.form['gender'] == "Female":
         gender = "F"
     status = request.form['status']
-    check_in = request.form['check-in']
-    check_out = request.form['check-out']
+    check_in = date_box_to_date(request.form['check-in'])
+    check_out = date_box_to_date(request.form['check-out'])
     patient = Patient(name, dob, type, breed, gender, status, vet, client, check_in, check_out, id)
     patient_repository.update(patient)
     return redirect('/patients')
