@@ -27,6 +27,18 @@ def new_treatment(patient_id):
     vets = vet_repository.select_all()
     return render_template('/treatments/new.html', selected_patient=patient, all_vets=vets)
 
+@treatments_blueprint.route('/treatments/new')
+def new_treatment_select_patient():
+    patients = patient_repository.select_all()
+    return render_template('/treatments/select_patient.html', all_patients=patients)
+
+@treatments_blueprint.route('/treatments/select-patient', methods=["POST"])
+def new_patient():
+    selected_patient = patient_repository.select(request.form["patient-name"])
+    patients = patient_repository.select_all()
+    vets = vet_repository.select_all()
+    return render_template('treatments/new.html', selected_patient=selected_patient, all_patients=patients, all_vets=vets)
+
 # CREATE
 @treatments_blueprint.route('/treatments/<patient_id>/create', methods=['POST'])
 def create_treatment(patient_id):
