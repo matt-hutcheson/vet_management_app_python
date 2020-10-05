@@ -38,15 +38,15 @@
         </li>
         <li>
             <label for="check-in">Check-in Date</label>
-            <input type="text" name="check-in" id="check-in" value="DD/MM/YYYY" onclick="this.select();">
+            <input type="date" name="check-in" id="check-in" min="2020-01-01" max="3000-01-01">
         </li>
         <li>
             <label for="check-out">Check-out Date</label>
-            <input type="text" name="check-out" id="check-out" value="DD/MM/YYYY" onclick="this.select();">
+            <input type="date" name="check-out" id="check-out" min="2020-01-01" max="3000-01-01">
         </li>
         <li>
             <label for="dob">Date of Birth</label>
-            <input type="text" name="dob" id="dob" value="DD/MM/YYYY" onClick="this.select();" required>
+            <input type="date" name="dob" id="dob" min="2020-01-01" max="3000-01-01" required>
         </li>
         <li>
             <label for="gender">Gender</label>
@@ -57,7 +57,7 @@
         </li>
         <li>
             <label for="status">Status</label>
-            <input type="radio" name="status" id="alive" value="Alive" selected>
+            <input type="radio" name="status" id="alive" value="Alive" checked>
             <label for="alive">Alive</label>
             <input type="radio" name="status" id="dead" value="Dead">
             <label for="dead">Dead</label>

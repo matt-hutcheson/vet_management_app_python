@@ -40,14 +40,14 @@ def create_patient():
     client = client_repository.select(client_id)
     vet_id = request.form['vet-name']
     vet = vet_repository.select(vet_id)
-    dob = request.form['dob']
+    dob = str(request.form['dob'][-2:]) + "/" + str(request.form['dob'][5:7]) + "/" + str(request.form['dob'][0:4])
     if request.form['gender'] == "Male":
         gender = "M"
     elif request.form['gender'] == "Female":
         gender = "F"
     status = request.form['status']
-    check_in = request.form['check-in']
-    check_out = request.form['check-out']
+    check_in = str(request.form['check-in'][-2:]) + "/" + str(request.form['check-in'][5:7]) + "/" + str(request.form['check-in'][0:4])
+    check_out = str(request.form['check-out'][-2:]) + "/" + str(request.form['check-out'][5:7]) + "/" + str(request.form['check-out'][0:4])
     patient = Patient(name, dob, type, breed, gender, status, vet, client, check_in, check_out)
     patient_repository.save(patient)
     return redirect('/patients')

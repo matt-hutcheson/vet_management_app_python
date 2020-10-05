@@ -26,6 +26,8 @@ def vet_patients(vet_id):
 @vets_blueprint.route("/vets/<vet_id>/clients")
 def vet_clients(vet_id):
     clients = vet_repository.select_clients(vet_id)
+    vet = vet_repository.select(vet_id)
+    return render_template("vets/index_clients.html", all_clients=clients, vet=vet)
 
 #  NEW
 @vets_blueprint.route("/vets/new")
@@ -65,7 +67,3 @@ def update_vet(id):
 def delete_vet(id):
     vet_repository.delete(id)
     return redirect("/vets")
-
-# Edit to include client list
-
-# Edit to include patients list
