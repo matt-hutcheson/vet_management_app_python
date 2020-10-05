@@ -41,6 +41,10 @@ def create_treatment(patient_id):
     return redirect(url_for('.treatments', patient_id=patient_id))
 
 # EDIT
+@treatments_blueprint.route('treatments/<treatment_id>/edit', methods=['GET'])
+def edit_treatment(treatment_id):
+    treatment = treatment_repository.select(treatment_id)
+    return render_template('/treatments/edit.html', treatment=treatment)
 
 # UPDATE
 
