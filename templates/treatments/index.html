@@ -21,12 +21,12 @@
         {{ treatment.notes }}
     </li>
     <li>
-        <form action="/treatments/{{ treatment.id }}/edit" method="get">
+        <form action="/treatments/{{ treatment.patient.id }}/{{ treatment.id }}/edit" method="get">
             <input type="submit" value="Edit">
         </form>
     </li>
     <li>
-        <form action="/treatments/{{ treatment.id }}/delete" method="post">
+        <form action="/treatments/{{ treatment.patient.id }}/{{ treatment.id }}/delete" method="post">
             <input type="submit" value="Delete">
         </form>
     </li>
