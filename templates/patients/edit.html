@@ -38,15 +38,15 @@
         </li>
         <li>
             <label for="check-in">Check-in Date</label>
-            <input type="date" name="check-in" id="check-in" value="{{ patient.check_in_date }}" onclick="this.select();">
+            <input type="date" name="check-in" id="check-in" value="{{ patient.check_in_date }}" min="2020-01-01" max="3000-01-01">
         </li>
         <li>
             <label for="check-out">Check-out Date</label>
-            <input type="text" name="check-out" id="check-out" value="{{ patient.check_out_date }}" onclick="this.select();">
+            <input type="date" name="check-out" id="check-out" value="{{ patient.check_out_date }}" min="2020-01-01" max="3000-01-01">
         </li>
         <li>
             <label for="dob">Date of Birth</label>
-            <input type="text" name="dob" id="dob" value="{{ patient.dob }}" onClick="this.select();" required>
+            <input type="date" name="dob" id="dob" value="{{ patient.dob }}" min="2020-01-01" max="3000-01-01">
         </li>
         <li>
             <label for="gender">Gender</label>

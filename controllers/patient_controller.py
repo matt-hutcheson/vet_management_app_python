@@ -4,6 +4,7 @@ from flask import Blueprint
 from models.src.client import Client
 from models.src.vet import Vet
 from models.src.patient import Patient
+from models.src.date_changer import date_box_to_date
 
 import repositories.patient_repository as patient_repository
 import repositories.client_repository as client_repository
@@ -40,14 +41,14 @@ def create_patient():
     client = client_repository.select(client_id)
     vet_id = request.form['vet-name']
     vet = vet_repository.select(vet_id)
-    dob = str(request.form['dob'][-2:]) + "/" + str(request.form['dob'][5:7]) + "/" + str(request.form['dob'][0:4])
+    dob = date_box_to_date(request.form['dob'])#str(request.form['dob'][-2:]) + "/" + str(request.form['dob'][5:7]) + "/" + str(request.form['dob'][0:4])
     if request.form['gender'] == "Male":
         gender = "M"
     elif request.form['gender'] == "Female":
         gender = "F"
     status = request.form['status']
-    check_in = str(request.form['check-in'][-2:]) + "/" + str(request.form['check-in'][5:7]) + "/" + str(request.form['check-in'][0:4])
-    check_out = str(request.form['check-out'][-2:]) + "/" + str(request.form['check-out'][5:7]) + "/" + str(request.form['check-out'][0:4])
+    check_in = date_box_to_date(request.form['check-in']) #str(request.form['check-in'][-2:]) + "/" + str(request.form['check-in'][5:7]) + "/" + str(request.form['check-in'][0:4])
+    check_out = date_box_to_date(request.form['check-out']) #str(request.form['check-out'][-2:]) + "/" + str(request.form['check-out'][5:7]) + "/" + str(request.form['check-out'][0:4])
     patient = Patient(name, dob, type, breed, gender, status, vet, client, check_in, check_out)
     patient_repository.save(patient)
     return redirect('/patients')

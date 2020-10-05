@@ -27,6 +27,12 @@
     <li>
         Status
     </li>
+    <li>
+        Check-in Date
+    </li>
+    <li>
+        Check-out Date
+    </li>
 </ul>
 
 {% for patient in all_patients %}
@@ -60,6 +66,12 @@
     </li>
     <li>
         {{ patient.status}}
+    </li>
+    <li>
+        {{ patient.check_in_date }}
+    </li>
+    <li>
+        {{ patient.check_out_date}}
     </li>
     <li>
         <form action="/treatments/{{ patient.id }}" method="get">
