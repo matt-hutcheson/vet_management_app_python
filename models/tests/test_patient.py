@@ -24,9 +24,6 @@ class TestPatient(unittest.TestCase):
         self.assertEqual("Vic", self.test_patient.client.first_name)
         self.assertEqual("Bob", self.test_patient.vet.first_name)
 
-    def test_date_to_datebox(self):
-        self.assertEqual("07/05/2019", date_box_to_date(self.test_date))
-
     @unittest.skip("Delete this line to run the test")
     def test_age_to_date(self):
         pass
