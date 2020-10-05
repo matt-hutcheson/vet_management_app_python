@@ -41,7 +41,10 @@ def create_patient():
     client = client_repository.select(client_id)
     vet_id = request.form['vet-name']
     vet = vet_repository.select(vet_id)
-    dob = date_box_to_date(request.form['dob'])
+    if request.form['dob-select'] == "date":
+        dob = date_box_to_date(request.form['dob'])
+    elif request.form['dob-select'] == "age":
+        dob = age_to_date(request.form['age'])
     if request.form['gender'] == "Male":
         gender = "M"
     elif request.form['gender'] == "Female":

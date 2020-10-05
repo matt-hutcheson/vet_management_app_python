@@ -17,7 +17,7 @@ def date_to_age(date):
     return age
 
 def age_to_date(age):
-    years = age
+    years = int(age)
     days_per_year = 365.24
     new_date = datetime.date.today() - datetime.timedelta(days=(years*days_per_year))
     if len(str(new_date.day)) < 2:

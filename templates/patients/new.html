@@ -45,8 +45,18 @@
             <input type="date" name="check-out" id="check-out" min="2020-01-01" max="3000-01-01">
         </li>
         <li>
+            <input type="radio" name="dob-select" id="select-date" value="date" checked>
+            <label for="select-date">By Date</label>
+            <input type="radio" name="dob-select" id="select-age" value="age">
+            <label for="select-age">By Age</label>
+        </li>
+        <li>
             <label for="dob">Date of Birth</label>
-            <input type="date" name="dob" id="dob" min="1000-01-01" max="3000-01-01" required>
+            <input type="date" name="dob" id="dob" min="1000-01-01" max="3000-01-01">
+        </li>
+        <li>
+            <label for="age">Age</label>
+            <input type="number" name="age" id="age" min="1" max="200">
         </li>
         <li>
             <label for="gender">Gender</label>
