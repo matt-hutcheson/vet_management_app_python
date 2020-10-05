@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, request
 from flask import Blueprint
+import datetime
 
 from models.src.client import Client
 from models.src.vet import Vet
@@ -17,6 +18,13 @@ patients_blueprint = Blueprint("patients", __name__)
 def patients():
     patients = patient_repository.select_all()
     return render_template('patients/index.html', all_patients = patients)
+
+# @patients_blueprint.route('patients/checked-in')
+# def checked_in_patients():
+#     patients = patient_repository.select_all()
+#     for patient in patients:
+
+
 
 # NEW
 @patients_blueprint.route('/patients/new', methods=["GET"])

@@ -28,3 +28,10 @@ def age_to_date(age):
     else:
         dob = str(new_date.year) + "-" + str(new_date.month) + "-" + str(new_date.day)
     return dob
+
+def check_checked_in(check_in_date, check_out_date):
+    if datetime.datetime.strptime(check_in_date, "%d/%m/%Y") < datetime.datetime.now() and datetime.datetime.now() < datetime.datetime.strptime(check_out_date, "%d/%m/%Y"):
+        checked_in = True
+    else:
+        checked_in = False
+    return checked_in

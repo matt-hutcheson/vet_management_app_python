@@ -14,3 +14,9 @@ class TestDateChanger(unittest.TestCase):
 
     def test_age_to_date(self):
         self.assertEqual("2017-10-06", age_to_date(3))
+
+    def test_check_checked_in__True(self):
+        self.assertEqual(True, check_checked_in("03/10/2020", "10/10/2020"))
+
+    def test_check_checked_in__False(self):
+        self.assertEqual(False, check_checked_in("03/10/2020", "04/10/2020")) 
