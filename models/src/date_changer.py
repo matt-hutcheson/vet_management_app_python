@@ -35,3 +35,6 @@ def check_checked_in(check_in_date, check_out_date):
     else:
         checked_in = False
     return checked_in
+
+def date_today():
+    return datetime.datetime.strftime(datetime.datetime.now(), "%Y-%m-%d")

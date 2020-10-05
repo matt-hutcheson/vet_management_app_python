@@ -20,3 +20,6 @@ class TestDateChanger(unittest.TestCase):
 
     def test_check_checked_in__False(self):
         self.assertEqual(False, check_checked_in("03/10/2020", "04/10/2020")) 
+
+    def test_date_today(self):
+        self.assertEqual("2020-10-05", date_today())
