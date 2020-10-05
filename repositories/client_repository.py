@@ -2,7 +2,10 @@ from db.run_sql import run_sql
 
 from models.src.client import Client
 from models.src.vet import Vet
+from models.src.patient import Patient
+
 import repositories.vet_repository as vet_repository
+import repositories.client_repository as client_repository
 
 def save(client):
     sql = "INSERT INTO clients (first_name, last_name, phone_number, address, registered, vet_id) VALUES (%s, %s, %s, %s, %s, %s) RETURNING *"
@@ -37,6 +40,19 @@ def select(id):
         vet = vet_repository.select(result['vet_id'])
         client = Client(result['first_name'], result['last_name'], result['phone_number'], result['address'], result['registered'], vet, result['id'])
     return client
+
+def select_pets(client_id):
+    pets = []
+    sql = "SELECT * FROM patients WHERE client_id = %s"
+    values = [client_id]
+    results = run_sql(sql, values)
+    if results is not None:
+        for row in results:
+            vet = vet_repository.select(row['vet_id'])
+            client = client_repository.select(row['client_id'])
+            pet = Patient(row['name'], row['dob'], row['type'], row['breed'], row['gender'], row['status'], vet, client, row['check_in_date'], row['check_out_date'], row['id'])
+            pets.append(pet)
+    return pets
 
 def delete(id):
     sql = "DELETE FROM clients WHERE id = %s"

@@ -17,14 +17,17 @@ patients_blueprint = Blueprint("patients", __name__)
 @patients_blueprint.route('/patients')
 def patients():
     patients = patient_repository.select_all()
-    return render_template('patients/index.html', all_patients = patients)
+    patient_list = "All Patients"
+    return render_template('patients/index.html', all_patients = patients, patient_list = patient_list)
 
-# @patients_blueprint.route('patients/checked-in')
-# def checked_in_patients():
-#     patients = patient_repository.select_all()
-#     for patient in patients:
-
-
+@patients_blueprint.route('/patients/checked-in')
+def checked_in_patients():
+    patients = patient_repository.select_all()
+    patient_list = "In Patients"
+    for patient in patients:
+        if patient.checked_in == False:
+            patients.remove(patient)
+    return render_template('patients/index.html', all_patients=patients, patient_list=patient_list)
 
 # NEW
 @patients_blueprint.route('/patients/new', methods=["GET"])

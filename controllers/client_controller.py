@@ -17,6 +17,13 @@ def clients():
     clients = client_repository.select_all()
     return render_template('/clients/index.html', all_clients=clients)
 
+@clients_blueprint.route("/clients/<client_id>/all-pets")
+def all_pets_clients(client_id):
+    patients = client_repository.select_pets(client_id)
+    client = client_repository.select(client_id)
+    patient_list = client.first_name + " " + client.last_name + " Pets"
+    return render_template('/patients/index.html', all_patients = patients, patient_list=patient_list)
+
 #  NEW
 @clients_blueprint.route("/clients/new")
 def new_client():
