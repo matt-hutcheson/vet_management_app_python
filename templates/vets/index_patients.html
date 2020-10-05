@@ -1,0 +1,85 @@
+{% extends 'index.html' %}
+
+{% block main %}
+
+<h2>{{ vet.first_name }} {{ vet.last_name }}</h2>
+
+<ul>
+    <li>
+        Name
+    </li>
+    <li>
+        Type
+    </li>
+    <li>
+        Breed
+    </li>
+    <li>
+        Gender
+    </li>
+    <li>
+        Vet Name
+    </li>
+    <li>
+        Owner Name
+    </li>
+    <li>
+        D.O.B
+    </li>
+    <li>
+        Status
+    </li>
+</ul>
+
+{% for patient in all_patients %}
+
+<ul>
+    <li>
+        {{ patient.name }}
+    </li>
+    <li>
+        {{ patient.type }}
+    </li>
+    <li>
+        {{ patient.breed }}
+    </li>
+    <li>
+        {% if patient.gender == "M" %}
+            Male
+        {% endif %}
+        {% if patient.gender == "F" %}
+            Female
+        {% endif %}
+    </li>
+    <li>
+        {{ patient.vet.first_name}} {{ patient.vet.last_name }}
+    </li>
+    <li>
+        {{ patient.client.first_name}} {{ patient.client.last_name }}
+    </li>
+    <li>
+        {{ patient.dob }}
+    </li>
+    <li>
+        {{ patient.status}}
+    </li>
+    <li>
+        <form action="/treatments/{{ patient.id }}" method="get">
+            <input type="submit" value="View Treatments">
+        </form>
+    </li>
+    <li>
+        <form action="/patients/{{ patient.id }}/edit" method="get">
+            <input type="submit" value="Edit">
+        </form>
+    </li>
+    <li>
+        <form action="/patients/{{ patient.id }}/delete" method="POST">
+            <input type="submit" value="Delete">
+        </form>
+    </li>
+</ul>
+
+{% endfor %}
+
+{% endblock %}

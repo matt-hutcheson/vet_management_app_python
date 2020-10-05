@@ -4,6 +4,7 @@ from flask import Blueprint
 from models.src.vet import Vet
 
 import repositories.vet_repository as vet_repository
+import repositories.patient_repository as patient_repository
 
 vets_blueprint = Blueprint("vets", __name__)
 
@@ -12,6 +13,13 @@ vets_blueprint = Blueprint("vets", __name__)
 def vets():
     vets = vet_repository.select_all()
     return render_template("vets/index.html", all_vets = vets)
+
+# INDEX PATIENTS OF VET
+@vets_blueprint.route("/vets/<vet_id>/patients")
+def vet_patients(vet_id):
+    patients = vet_repository.select_patients(vet_id)
+    vet = vet_repository.select(vet_id)
+    return render_template("vets/index_patients.html", all_patients=patients, vet=vet)
 
 #  NEW
 @vets_blueprint.route("/vets/new")
