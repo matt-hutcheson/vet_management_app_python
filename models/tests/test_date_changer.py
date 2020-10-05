@@ -11,3 +11,6 @@ class TestDateChanger(unittest.TestCase):
 
     def test_date_to_age(self):
         self.assertEqual(3, date_to_age("19/08/2017"))
+
+    def test_age_to_date(self):
+        self.assertEqual("2017-10-06", age_to_date(3))
