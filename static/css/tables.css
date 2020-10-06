@@ -1,0 +1,35 @@
+.table-container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.header-cell {
+    background-color: #454552;
+    color: #d8e9ef;
+    padding: 1ch;
+}
+
+.table-cell-bordered {
+    border: solid #454552;
+}
+
+.clients-table {
+    border-collapse: collapse;
+    width: 80%;
+}
+
+.patients-table {
+    border-collapse: collapse;
+    width: 80%;
+}
+
+.table-cell-button-first {
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+}
+
+.table-cell-button {
+    border: none;
+}

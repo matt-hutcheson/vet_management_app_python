@@ -1,75 +1,60 @@
 {% extends 'index.html' %}
 
 {% block main %}
-
-<h2>{{ vet.first_name }} {{ vet.last_name }} Client List</h2>
-
-<ul>
-    <li>
-        Name
-    </li>
-    <li>
-        Pets
-    </li>
-    <li>
-        Phone Number
-    </li>
-    <li>
-        Address
-    </li>
-    <li>
-        Registered?
-    </li>
-    <li>
-        Vet Name
-    </li>
-</ul>
-
-{% for client in all_clients %}
-
-<ul>
-    <li>
-        {{ client.first_name}} {{ client.last_name}}
-    </li>
-    <!-- <li>
-        {% for pet in pets %}
-            <a href="/pet/<{{ pet.id }}>/edit"></a>{{ pet.name }}
-        {% endfor %}
-    </li> -->
-    <li>
-        {{ client.phone_number[0:5] }} {{ client.phone_number[5:8] }} {{ client.phone_number[8:] }}
-    </li>
-    <li>
-        {{ client.address }}
-    </li>
-    <li>
-        {% if client.registered == True %}
-            Y
-        {% endif %}
-        {% if client.registered == False %}
-            N
-        {% endif %}
-    </li>
-    <li>
-        {{ client.vet.first_name }} {{ client.vet.last_name}}
-    </li>
-    <li>
-        <form action="/clients/{{ client.id }}/all-pets" method="get">
-            <input type="submit" value="Show All Pets">
-        </form>
-    </li>
-    <li>
-        <form action="/clients/{{ client.id }}/edit" method="get">
-            <input type="submit" value="Edit">
-        </form>
-    </li>
-    <li>
-        <form action="/clients/{{ client.id }}/delete" method="POST">
-            <input type="submit" value="Delete">
-        </form>
-    </li>
-</ul>
-
-{% endfor %}
+<article class="index" id="index-clients">
+    <h2>{{ vet.first_name }} {{ vet.last_name }} Client List</h2>
+    <section class="table-container">
+        <table class="clients-table">
+            <thead>
+                <tr>
+                    <th colspan="9"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-headings">
+                    <td class="table-cell-bordered header-cell">Name</td>
+                    <td class="table-cell-bordered header-cell">Phone Number</td>
+                    <td class="table-cell-bordered header-cell">Address</td>
+                    <td class="table-cell-bordered header-cell">Registered?</td>
+                    <td class="table-cell-bordered header-cell">Vet Name</td>
+                    <td class="table-cell-button-first"></td>
+                    <td class="table-cell-button"></td>
+                    <td class="table-cell-button"></td>
+                </tr>
+                {% for client in all_clients %}
+                <tr class="table-rows">
+                    <td class="table-cell-bordered">{{ client.first_name}} {{ client.last_name}}</td>
+                    <td class="table-cell-bordered">{{ client.phone_number[0:5] }} {{ client.phone_number[5:8] }} {{ client.phone_number[8:] }}</td>
+                    <td class="table-cell-bordered">{{ client.address }}</td>
+                    <td class="table-cell-bordered">
+                        {% if client.registered == True %}
+                        Y
+                    {% endif %}
+                    {% if client.registered == False %}
+                        N
+                    {% endif %}
+                    </td>
+                    <td class="table-cell-bordered">{{ client.vet.first_name }} {{ client.vet.last_name}}</td>
+                    <td class="table-cell-button-first">
+                        <form action="/clients/{{ client.id }}/all-pets" method="get">
+                            <input type="submit" value="Show All Pets" class="button-submit table-button">
+                        </form>
+                    </td>
+                    <td class="table-cell-button">
+                        <form action="/clients/{{ client.id }}/edit" method="get">
+                            <input type="submit" value="Edit" class="button-submit table-button">
+                        </form>
+                    </td>
+                    <td class="table-cell-button">
+                        <form action="/clients/{{ client.id }}/delete" method="POST">
+                            <input type="submit" value="Delete" class="button-submit table-button">
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</article>
 
 {% endblock %}

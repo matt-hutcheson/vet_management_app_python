@@ -1,90 +1,68 @@
 {% extends 'index.html' %}
 
 {% block main %}
-
-<h2>{{ patient_list }}</h2>
-
-<ul>
-    <li>
-        Name
-    </li>
-    <li>
-        Type
-    </li>
-    <li>
-        Breed
-    </li>
-    <li>
-        Gender
-    </li>
-    <li>
-        Vet Name
-    </li>
-    <li>
-        Owner Name
-    </li>
-    <li>
-        D.O.B
-    </li>
-    <li>
-        Status
-    </li>
-    <li>
-        Checked-in
-    </li>
-</ul>
-
-{% for patient in all_patients %}
-
-<ul>
-    <li>
-        {{ patient.name }}
-    </li>
-    <li>
-        {{ patient.type }}
-    </li>
-    <li>
-        {{ patient.breed }}
-    </li>
-    <li>
-        {% if patient.gender == "M" %}
-            Male
-        {% endif %}
-        {% if patient.gender == "F" %}
-            Female
-        {% endif %}
-    </li>
-    <li>
-        {{ patient.vet.first_name}} {{ patient.vet.last_name }}
-    </li>
-    <li>
-        {{ patient.client.first_name}} {{ patient.client.last_name }}
-    </li>
-    <li>
-        {{ patient.dob }}
-    </li>
-    <li>
-        {{ patient.status}}
-    </li>
-    <li>
-        {{ patient.checked_in }}
-    <li>
-        <form action="/treatments/{{ patient.id }}" method="get">
-            <input type="submit" value="View Treatments">
-        </form>
-    </li>
-    <li>
-        <form action="/patients/{{ patient.id }}/edit" method="get">
-            <input type="submit" value="Edit">
-        </form>
-    </li>
-    <li>
-        <form action="/patients/{{ patient.id }}/delete" method="POST">
-            <input type="submit" value="Delete">
-        </form>
-    </li>
-</ul>
-
-{% endfor %}
+<article class="index" id="index-patients">
+    <h2>{{ patient_list }}</h2>
+    <section class="table-container">
+        <table class="patients-table">
+            <thead>
+                <tr>
+                    <th colspan="12"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-headings">
+                        <td class="table-cell-bordered header-cell">Name</td>
+                        <td class="table-cell-bordered header-cell">Type</td>
+                        <td class="table-cell-bordered header-cell">Breed</td>
+                        <td class="table-cell-bordered header-cell">Gender</td>
+                        <td class="table-cell-bordered header-cell">Vet Name</td>
+                        <td class="table-cell-bordered header-cell">Owner Name</td>
+                        <td class="table-cell-bordered header-cell">D.O.B</td>
+                        <td class="table-cell-bordered header-cell">Status</td>
+                        <td class="table-cell-bordered header-cell">Checked-in</td>
+                        <td class="table-cell-button-first"></td>
+                        <td class="table-cell-button"></td>
+                        <td class="table-cell-button"></td>
+                </tr>
+                {% for patient in all_patients %}
+                <tr class="table-rows">
+                    <td class="table-cell-bordered">{{ patient.name }}</td>
+                    <td class="table-cell-bordered">{{ patient.type }}</td>
+                    <td class="table-cell-bordered">{{ patient.breed }}</td>
+                    <td class="table-cell-bordered">
+                        {% if patient.gender == "M" %}
+                            Male
+                        {% endif %}
+                        {% if patient.gender == "F" %}
+                            Female
+                        {% endif %}
+                    </td>
+                    <td class="table-cell-bordered">{{ patient.vet.first_name}} {{ patient.vet.last_name }}</td>
+                    <td class="table-cell-bordered">{{ patient.client.first_name}} {{ patient.client.last_name }}</td>
+                    <td class="table-cell-bordered">{{ patient.dob }}</td>
+                    <td class="table-cell-bordered">{{ patient.status }}</td>
+                    <td class="table-cell-bordered">{{ patient.checked_in }}</td>
+                    <td class="table-cell-button-first">
+                        <form action="/treatments/{{ patient.id }}" method="get">
+                            <input type="submit" value="View Treatments" class="button-submit table-button">
+                        </form>
+                    </td>
+                    <td class="table-cell-button">
+                        <form action="/patients/{{ patient.id }}/edit" method="get">
+                            <input type="submit" value="Edit" class="button-submit table-button">
+                        </form>
+                    </td>
+                    <td class="table-cell-button">
+                        <form action="/patients/{{ patient.id }}/delete" method="POST">
+                            <input type="submit" value="Delete" class="button-submit table-button">
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</article>
 
 {% endblock %}
