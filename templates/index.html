@@ -2,47 +2,26 @@
 
 {% block content %}
 
-<ul>
-    <li>
-        <form action="/vets" method="GET">
-            <input type="submit" value="All Vets">
-        </form>
-    </li>
-    <li>
-        <form action="/clients" method="GET">
-            <input type="submit" value="All Clients">
-        </form>
-    </li>
-    <li>
-        <form action="/patients" method="GET">
-            <input type="submit" value="All Patients">
-        </form>
-    </li>
-    <li>
-        <form action="/patients/checked-in" method="get">
-            <input type="submit" value="In Patients">
-        </form>
-    </li>
-</ul>
-<ul>
+
+<ul id="new-index">
     <li>
         <form action="/vets/new" method="get">
-            <input type="submit" value="New Vet">
+            <input type="submit" value="New Vet" class="button-submit button-index">
         </form>
     </li>
     <li>
         <form action="/clients/new" method="get">
-            <input type="submit" value="New Client">
+            <input type="submit" value="New Client" class="button-submit button-index">
         </form>
     </li>
     <li>
         <form action="/patients/new" method="get">
-            <input type="submit" value="New Patient">
+            <input type="submit" value="New Patient" class="button-submit button-index">
         </form>
     </li>
     <li>
         <form action="/treatments/new" method="get">
-            <input type="submit" value="New Treatment">
+            <input type="submit" value="New Treatment" class="button-submit button-index">
         </form>
     </li>
 </ul>

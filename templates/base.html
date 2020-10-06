@@ -3,13 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/buttons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tables.css') }}">
     <title>Vet Management</title>
 </head>
 <body>
     <header>
-        <a href="/">
-            <h1>Little Rascals Vet Management</h1>
-        </a>
+        <div class="logo-title">
+            <a href="/">
+                <img src="https://via.placeholder.com/150" alt="practice-logo" class="logo">
+            </a>
+            <a href="/">
+                <h1 class="practice-title">Little Rascals Vet Management</h1>
+            </a>
+        </div>
+
+        <nav>
+            <ul>
+                <li>
+                    <form action="/vets" method="GET">
+                        <input type="submit" value="All Vets" class="button-submit button-nav">
+                    </form>
+                </li>
+                <li>
+                    <form action="/clients" method="GET">
+                        <input type="submit" value="All Clients" class="button-submit button-nav">
+                    </form>
+                </li>
+                <li>
+                    <form action="/patients" method="GET">
+                        <input type="submit" value="All Patients" class="button-submit button-nav">
+                    </form>
+                </li>
+                <li>
+                    <form action="/patients/checked-in" method="get">
+                        <input type="submit" value="In-Patients" class="button-submit button-nav">
+                    </form>
+                </li>
+            </ul>
+        </nav>
+        
     </header>
     <main>
         {% block content %}
@@ -17,7 +52,14 @@
         {% endblock %}
     </main>
     <footer>
-
+        <div class="logo-title">
+            <a href="/">
+                <img src="https://via.placeholder.com/150" alt="practice-logo" class="logo">
+            </a>
+            <a href="/">
+                <h1 class="practice-title">Little Rascals Vet Management</h1>
+            </a>
+        </div>
     </footer>
 </body>
 </html>

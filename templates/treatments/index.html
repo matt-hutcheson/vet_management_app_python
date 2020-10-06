@@ -1,37 +1,37 @@
 {% extends 'index.html' %}
 
 {% block main %}
+<article class="index">
+    <h2>{{ selected_patient.name }} Treatment History</h2>
 
-<h2>{{ selected_patient.name }} Treatment History</h2>
+    <form action="/treatments/{{ selected_patient.id }}/new" method="get">
+        <input type="submit" value="Add New Treatment" class="button-submit">
+    </form>
 
-<form action="/treatments/{{ selected_patient.id }}/new" method="get">
-    <input type="submit" value="Add New Treatment">
-</form>
+    {% for treatment in all_treatments %}
 
-{% for treatment in all_treatments %}
+    <ul>
+        <li>
+            {{ treatment.vet.first_name }} {{ treatment.vet.last_name }}
+        </li>
+        <li>
+            {{ treatment.date }}
+        </li>
+        <li>
+            {{ treatment.notes }}
+        </li>
+        <li>
+            <form action="/treatments/{{ treatment.patient.id }}/{{ treatment.id }}/edit" method="get">
+                <input type="submit" value="Edit" class="button-submit">
+            </form>
+        </li>
+        <li>
+            <form action="/treatments/{{ treatment.patient.id }}/{{ treatment.id }}/delete" method="post">
+                <input type="submit" value="Delete" class="button-submit">
+            </form>
+        </li>
+    </ul>
 
-<ul>
-    <li>
-        {{ treatment.vet.first_name }} {{ treatment.vet.last_name }}
-    </li>
-    <li>
-        {{ treatment.date }}
-    </li>
-    <li>
-        {{ treatment.notes }}
-    </li>
-    <li>
-        <form action="/treatments/{{ treatment.patient.id }}/{{ treatment.id }}/edit" method="get">
-            <input type="submit" value="Edit">
-        </form>
-    </li>
-    <li>
-        <form action="/treatments/{{ treatment.patient.id }}/{{ treatment.id }}/delete" method="post">
-            <input type="submit" value="Delete">
-        </form>
-    </li>
-</ul>
-
-{% endfor %}
-
+    {% endfor %}
+</article>
 {% endblock %}
