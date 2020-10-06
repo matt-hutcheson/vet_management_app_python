@@ -1,73 +1,85 @@
 {% extends 'index.html' %}
 
 {% block main %}
+<article class="index" id="index-clients">
+    <h2>All Clients</h2>
+    <div class="clients-table">
+        <ul class="clients-headings">
+            <li class="table-cell">
+                Name
+            </li class="table-cell">
+            <!-- <li>
+                Pets
+            </li> -->
+            <li class="table-cell">
+                Phone Number
+            </li>
+            <li class="table-cell">
+                Address
+            </li>
+            <li class="table-cell">
+                Registered?
+            </li>
+            <li class="table-cell-last">
+                Vet Name
+            </li>
+            <li>
+                <!-- for styling -->
+            </li>
+            <li>
+                <!-- for styling -->
+            </li>
+            <li>
+                <!-- for styling -->
+            </li>
+        </ul>
 
-<ul>
-    <li>
-        Name
-    </li>
-    <!-- <li>
-        Pets
-    </li> -->
-    <li>
-        Phone Number
-    </li>
-    <li>
-        Address
-    </li>
-    <li>
-        Registered?
-    </li>
-    <li>
-        Vet Name
-    </li>
-</ul>
+        {% for client in all_clients %}
 
-{% for client in all_clients %}
-
-<ul>
-    <li>
-        {{ client.first_name}} {{ client.last_name}}
-    </li>
-    <!-- <li>
-        {% for pet in pets %}
-            <a href="/pet/<{{ pet.id }}>/edit"></a>{{ pet.name }}
-        {% endfor %}
-    </li> -->
-    <li>
-        {{ client.phone_number[0:5] }} {{ client.phone_number[5:8] }} {{ client.phone_number[8:] }}
-    </li>
-    <li>
-        {{ client.address }}
-    </li>
-    <li>
-        {% if client.registered == True %}
-            Y
-        {% endif %}
-        {% if client.registered == False %}
-            N
-        {% endif %}
-    </li>
-    <li>
-        {{ client.vet.first_name }} {{ client.vet.last_name}}
-    </li>
-    <li>
-        <form action="/clients/{{ client.id }}/all-pets" method="get">
-            <input type="submit" value="Show All Pets">
-        </form>
-    </li>
-    <li>
-        <form action="/clients/{{ client.id }}/edit" method="get">
-            <input type="submit" value="Edit">
-        </form>
-    </li>
-    <li>
-        <form action="/clients/{{ client.id }}/delete" method="POST">
-            <input type="submit" value="Delete">
-        </form>
-    </li>
-</ul>
-
+        <ul class="clients-object">
+            <li class="table-cell">
+                {{ client.first_name}} {{ client.last_name}}
+            </li>
+            <!-- <li>
+                {% for pet in pets %}
+                    <a href="/pet/<{{ pet.id }}>/edit"></a>{{ pet.name }}
+                {% endfor %}
+            </li> -->
+            <li class="table-cell">
+                {{ client.phone_number[0:5] }} {{ client.phone_number[5:8] }} {{ client.phone_number[8:] }}
+            </li>
+            <li class="table-cell">
+                {{ client.address }}
+            </li>
+            <li class="table-cell">
+                {% if client.registered == True %}
+                    Y
+                {% endif %}
+                {% if client.registered == False %}
+                    N
+                {% endif %}
+            </li>
+            <li class="table-cell-last">
+                {{ client.vet.first_name }} {{ client.vet.last_name}}
+            </li>
+            <li>
+                <form action="/clients/{{ client.id }}/all-pets" method="get">
+                    <input type="submit" value="Show All Pets" class="button-submit table-button">
+                </form>
+            </li>
+            <li>
+                <form action="/clients/{{ client.id }}/edit" method="get">
+                    <input type="submit" value="Edit" class="button-submit table-button">
+                </form>
+            </li>
+            <li>
+                <form action="/clients/{{ client.id }}/delete" method="POST">
+                    <input type="submit" value="Delete" class="button-submit table-button">
+                </form>
+            </li>
+        </ul>
+    </div>
+</article>
 {% endfor %}
 
 {% endblock %}
