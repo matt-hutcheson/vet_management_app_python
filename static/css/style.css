@@ -73,11 +73,52 @@ footer .logo-title {
     justify-content: flex-start;
 }
 
+h2 {
+    text-align: center;
+    font-size: xx-large;
+}
+
 .vet-object {
     display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+.vet-details-buttons {
+    display: flex;
     flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .vet-details {
+    background-color: #4ea1d3;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+    border: solid #454552;
+    border-radius: 25%;
+}
 
+.new-vet-details > li > input {
+    margin: 5px;
+    width: 15ch;
+}
+
+.view-options {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.show-text {
+    background-color: #d8e9ef;
+    border: solid #454552;
+    min-width: 15ch;
+    padding: 5px;
+    text-align: center;
 }

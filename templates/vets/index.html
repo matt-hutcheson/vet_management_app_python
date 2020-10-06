@@ -6,7 +6,7 @@
     <ul class="vet-object">
         {% for vet in all_vets %}
 
-        <li>
+        <li class="vet-detials-buttons">
             <ul class="vet-details">
                 <!-- <li>
                     <img src="/static/images/" alt="vet_profile.png">
@@ -14,53 +14,50 @@
                 <li>
                     <label for="vet-name">Name</label>
                 </li>
-                <li>
+                <li class="show-text">
                     {{ vet.first_name}} {{ vet.last_name}}
                 </li>
                 <li>
                     <label for="vet-job-title">Job Title</label>
                 </li>
-                <li>
+                <li class="show-text">
                     {{ vet.job_title}}
                 </li>
                 <li>
                     <label for="vet-id">ID</label>
                 </li>
-                <li>
+                <li class="show-text">
                     {{ vet.id }}
                 </li>
                 <li>
                     <form action="/vets/{{ vet.id }}/edit" method="GET">
-                        <input type="submit" value="Edit">
+                        <input type="submit" value="Edit" class="button-submit vet-button">
                     </form>
                 </li>
                 <li>
                     <form action="/vets/{{ vet.id }}/delete" method="POST">
-                        <input type="submit" value="Delete">
+                        <input type="submit" value="Delete" class="button-submit vet-button">
                     </form>
                 </li>
             </ul>
-            <ul>
+            <ul class="view-options">
                 <li>
                     <form action="/vets/{{ vet.id }}/patients" method="GET">
-                        <input type="submit" value="View Patients">
+                        <input type="submit" value="View Patients" class="button-submit vet-button">
                     </form>
                 </li>
                 <li>
                     <form action="/vets/{{ vet.id }}/clients" method="GET">
-                        <input type="submit" value="View Clients">
+                        <input type="submit" value="View Clients" class="button-submit vet-button">
                     </form>
                 </li>
             </ul>
         </li>
 
         {% endfor %}
-
-        <li>
-            <form action="/vets/new" method="get">
-                <input type="submit" value="Create New Vet">
-            </form>
-        </li>
     </ul>
+    <form action="/vets/new" method="get" id="create-new-vet">
+        <input type="submit" value="Create New Vet" class="button-submit vet-button">
+    </form>
 </article>
 {% endblock %}

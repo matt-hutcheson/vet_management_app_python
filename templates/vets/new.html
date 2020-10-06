@@ -1,40 +1,48 @@
 {% extends 'index.html' %}
 
 {% block main %}
+<article>
+    <h2>Create New Vet</h2>
 
-<form action="/vets" method="post">
-<ul>
-    <!-- <li>
-        <img src="/static/images/" alt="vet_profile.png">
-    </li>
-    <li>
-        <form action="/vets/new/add-picture" method="get">
-            <input type="submit" value="Add Picture">
-        </form>
-    </li> -->
-    <li>
-        <label for="vet-first-name">First Name</label>
-        <input type="text" name="first-name" id="vet-first-name" required>
-    </li>
-    <li>
-        <label for="vet-last-name">Last Name</label>
-        <input type="text" name="last-name" id="vet-last-name" required>
-    </li>
-    <li>
-        <label for="job-title">Job Title</label>
-        <select name="job-title" id="job-title" required>
-            <option value="" disabled='True' selected="True">--Select Job Title--</option>
-            <option value="graduate">Graduate</option>
-            <option value="junior">Junior</option>
-            <option value="senior">Senior</option>
-            <option value="partner">Practice Partner</option>
-        </select>
-    </li>
-    <li>
-        <input type="submit" value="Create">
-    </li>
-</ul>
-</form>
-
+    <form action="/vets" method="post" class="vet-object">
+        <ul class="vet-details new-vet-details">
+            <!-- <li>
+                <img src="/static/images/" alt="vet_profile.png">
+            </li>
+            <li>
+                <form action="/vets/new/add-picture" method="get">
+                    <input type="submit" value="Add Picture">
+                </form>
+            </li> -->
+            <li>
+                <label for="vet-first-name">First Name</label>
+            </li>
+            <li>
+                <input type="text" name="first-name" id="vet-first-name" required>
+            </li>
+            <li>
+                <label for="vet-last-name">Last Name</label>
+            </li>
+            <li>
+                <input type="text" name="last-name" id="vet-last-name" required>
+            </li>
+            <li>
+                <label for="job-title">Job Title</label>
+            </li>
+            <li>
+                <select name="job-title" id="job-title" required>
+                    <option value="" disabled='True' selected="True">--Select Job Title--</option>
+                    <option value="graduate">Graduate</option>
+                    <option value="junior">Junior</option>
+                    <option value="senior">Senior</option>
+                    <option value="partner">Practice Partner</option>
+                </select>
+            </li>
+            <li>
+                <input type="submit" value="Create" class="button-submit vet-button">
+            </li>
+        </ul>
+    </form>
+</article>
 
 {% endblock %}

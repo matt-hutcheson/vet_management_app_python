@@ -16,7 +16,6 @@
     background-color: #454552;
     color: #d8e9ef;
     border-radius: 10%;
-
 }
 
 .button-submit:hover {
@@ -28,4 +27,17 @@
     font-size: medium;
     margin: 10px;
     padding: 10px;
+}
+
+.vet-button {
+    margin: 5px;
+    padding: 5px;
+    font-size: large;
+    min-width: 10ch;
+}
+
+#create-new-vet {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
 }
