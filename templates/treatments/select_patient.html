@@ -1,26 +1,31 @@
 {% extends 'index.html' %}
 
 {% block main %}
-<h2>New Treatment - Select Patient</h2>
+<article class="select-form-button">
+    <h2>New Treatment - Select Patient</h2>
 
-<form action="/treatments/select-patient" method="POST">
-    <ul>
-        <li>
-            <label for="patient-name">Select Patient</label>
-            <select name="patient-name" id="patient-name" required>
-                <option value="" disabled="True" selected>--Select Patient</option>
-                {% for patient in all_patients %}
-                <option value="{{ patient.id }}" {% if patient.client.registered == False %} disabled="True" {% endif %}>{{ patient.name }} {% if patient.client.registered == False %} -- Unregistered Client {% endif %}</option>
-                {% endfor %}
-            </select>
-        </li>
-        <li>
-            <input type="submit" value="Select Patient">
-        </li>
-    </ul>
-</form>
+    <form action="/treatments/select-patient" method="POST">
+        <ul class="select-client-form">
+            <li>
+                <label for="patient-name">Select Patient</label>
+            </li>
+            <li>
+                <select name="patient-name" id="patient-name" required>
+                    <option value="" disabled="True" selected>--Select Patient</option>
+                    {% for patient in all_patients %}
+                    <option value="{{ patient.id }}" {% if patient.client.registered == False %} disabled="True" {% endif %}>{{ patient.name }} {% if patient.client.registered == False %} -- Unregistered Client {% endif %}</option>
+                    {% endfor %}
+                </select>
+            </li>
+            <li>
+                <input type="submit" value="Select Patient" class="button-submit vet-button">
+            </li>
+        </ul>
+    </form>
 
-<form action="/patients/new" method="get">
-    <input type="submit" value="Create New Patient">
-</form>
+    <form action="/patients/new" method="get">
+        <input type="submit" value="Create New Patient" class="button-submit">
+    </form>
+
+</article>
 {% endblock %}

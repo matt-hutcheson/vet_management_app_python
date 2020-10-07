@@ -12,6 +12,7 @@ body {
 
 ul {
     list-style: none;
+    padding-inline-start: 0px;
 }
 
 header {
@@ -84,6 +85,7 @@ h2 {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
+    padding-left: 0;
 }
 
 .vet-details-buttons {
@@ -147,6 +149,7 @@ h2 {
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
+    padding-left: 0;
 }
 
 .show-text {
@@ -159,9 +162,27 @@ h2 {
 
 /* New client form */
 
-.new-client-details {
+.client-object {
     display: flex;
     flex-flow: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.new-client-details {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    border: solid #454552;
+    padding: 10px;
+    background-color: #4ea1d3;
+    border-radius: 5%;
+}
+
+#new-client-form > li {
+    margin-bottom: 5px;
+    text-align: center;
 }
 
 
@@ -210,4 +231,37 @@ h2 {
 th {
     padding: 0px;
     border: none;
+}
+
+/* select client/patient forms */
+
+.select-form-button {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.select-client-form {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+}
+
+.select-client-form > li {
+    margin-bottom: 5px;
+}
+
+/* Patient new and edit forms */
+
+#dob-age-radios {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#dob-age-radios > div {
+    margin: 10px;
 }

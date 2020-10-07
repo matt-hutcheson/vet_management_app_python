@@ -1,85 +1,117 @@
 {% extends 'index.html' %}
 
 {% block main %}
-
-<h2>New Patient</h2>
-
-<form action="/patients/create" method="POST">
-    <ul>
-        <li>
-            <label for="patient-name">Name</label>
-            <input type="text" name="name" id="patient-name" required>
-        </li>
-        <li>
-            <label for="type">Type</label>
-            <input type="text" name="type" id="type" required>
-        </li>
-        <li>
-            <label for="breed">Breed</label>
-            <input type="text" name="breed" id="breed" required>
-        </li>
-        <li>
-            <label for="client-name">Client Name</label>
-            <select name="client-name" id="client-name" required>
-                <option value="" disabled="True" >--Choose Client--</option>
-                {% for client in all_clients %}
-                <option value="{{ client.id}}" {% if client.id == selected_client.id %} selected {% endif %}>{{ client.first_name }} {{ client.last_name }}</option>
-                {% endfor %}
-            </select>
-        </li>
-        <li>
-            <label for="vet-name">Vet Name</label>
-            <select name="vet-name" id="vet-name" required>
-                <option value="" disabled="True" selected>--Choose Vet--</option>
-                {% for vet in all_vets %}
-                <option value="{{ vet.id }}">{{ vet.first_name }} {{ vet.last_name }}</option>
-                {% endfor %}
-            </select>
-        </li>
-        <li>
-            <label for="check-in">Check-in Date</label>
-            <input type="date" name="check-in" id="check-in" min="2020-01-01" max="3000-01-01">
-        </li>
-        <li>
-            <label for="check-out">Check-out Date</label>
-            <input type="date" name="check-out" id="check-out" min="2020-01-01" max="3000-01-01">
-        </li>
-        <li>
-            <input type="radio" name="dob-select" id="select-date" value="date" checked>
-            <label for="select-date">By Date</label>
-            <input type="radio" name="dob-select" id="select-age" value="age">
-            <label for="select-age">By Age</label>
-        </li>
-        <li>
-            <label for="dob">Date of Birth</label>
-            <input type="date" name="dob" id="dob" min="1000-01-01" max="3000-01-01">
-        </li>
-        <li>
-            <label for="age">Age</label>
-            <input type="number" name="age" id="age" min="1" max="200">
-        </li>
-        <li>
-            <label for="gender">Gender</label>
-            <input type="radio" name="gender" id="M" value="Male" checked>
-            <label for="M">Male</label>
-            <input type="radio" name="gender" id="F" value="Female">
-            <label for="F">Female</label>
-        </li>
-        <li>
-            <label for="status">Status</label>
-            <input type="radio" name="status" id="alive" value="Alive" checked>
-            <label for="alive">Alive</label>
-            <input type="radio" name="status" id="dead" value="Dead">
-            <label for="dead">Dead</label>
-            <input type="radio" name="status" id="lost" value="Lost">
-            <label for="lost">Lost</label>
-            <input type="radio" name="status" id="sold" value="Sold">
-            <label for="sold">Sold</label>
-        </li>
-        <li>
-            <input type="submit" value="Create">
-        </li>
-    </ul>
-</form>
-
+<article>
+    <h2>New Patient</h2>
+    <section >
+        <form action="/patients/create" method="POST" class="client-object">
+            <ul class="client-details new-client-details">
+                <section id="new-client-form">
+                    <li>
+                        <label for="patient-name">Name</label>
+                    </li>
+                    <li>
+                        <input type="text" name="name" id="patient-name" required>
+                    </li>
+                    <li>
+                        <label for="type">Type</label>
+                    </li>
+                    <li>
+                        <input type="text" name="type" id="type" required>
+                    </li>
+                    <li>
+                        <label for="breed">Breed</label>
+                    </li>
+                    <li>
+                        <input type="text" name="breed" id="breed" required>
+                    </li>
+                    <li>
+                        <label for="client-name">Client Name</label>
+                    </li>
+                    <li>
+                        <select name="client-name" id="client-name" required>
+                            <option value="" disabled="True" >--Choose Client--</option>
+                            {% for client in all_clients %}
+                            <option value="{{ client.id}}" {% if client.id == selected_client.id %} selected {% endif %}>{{ client.first_name }} {{ client.last_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </li>
+                    <li>
+                        <label for="vet-name">Vet Name</label>
+                    </li>
+                    <li>
+                        <select name="vet-name" id="vet-name" required>
+                            <option value="" disabled="True" selected>--Choose Vet--</option>
+                            {% for vet in all_vets %}
+                            <option value="{{ vet.id }}">{{ vet.first_name }} {{ vet.last_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </li>
+                    <li>
+                        <label for="check-in">Check-in Date</label>
+                    </li>
+                    <li>
+                        <input type="date" name="check-in" id="check-in" min="2020-01-01" max="3000-01-01">
+                    </li>
+                    <li>
+                        <label for="check-out">Check-out Date</label>
+                    </li>
+                    <li>
+                        <input type="date" name="check-out" id="check-out" min="2020-01-01" max="3000-01-01">
+                    </li>
+                    <li>
+                        <input type="radio" name="dob-select" id="select-date" value="date" checked>
+                        <label for="select-date">By Date</label>
+                        <input type="radio" name="dob-select" id="select-age" value="age">
+                        <label for="select-age">By Age</label>
+                    </li>
+                    <section id="dob-age-radios">
+                        <div>
+                            <li>
+                                <label for="dob">Date of Birth</label>
+                            </li>
+                            <li>
+                                <input type="date" name="dob" id="dob" min="1000-01-01" max="3000-01-01">
+                            </li>
+                        </div>
+                        <div>
+                            <li>
+                                <label for="age">Age</label>
+                            </li>
+                 
+                            <li>
+                                <input type="number" name="age" id="age" min="1" max="200">
+                            </li>
+                        </div>
+                    </section>
+                    <li>
+                        <label for="gender">Gender</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="gender" id="M" value="Male" checked>
+                        <label for="M">Male</label>
+                        <input type="radio" name="gender" id="F" value="Female">
+                        <label for="F">Female</label>
+                    </li>
+                    <li>
+                        <label for="status">Status</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="status" id="alive" value="Alive" checked>
+                        <label for="alive">Alive</label>
+                        <input type="radio" name="status" id="dead" value="Dead">
+                        <label for="dead">Dead</label>
+                        <input type="radio" name="status" id="lost" value="Lost">
+                        <label for="lost">Lost</label>
+                        <input type="radio" name="status" id="sold" value="Sold">
+                        <label for="sold">Sold</label>
+                    </li>
+                    <li>
+                        <input type="submit" value="Create">
+                    </li>
+                </section>
+            </ul>
+        </form>
+    </section>  
+</article>
 {% endblock %}

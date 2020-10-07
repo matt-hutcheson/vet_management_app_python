@@ -1,27 +1,31 @@
 {% extends 'index.html' %}
 
 {% block main %}
+<article class="select-form-button">
+    <h2>New Patient - Select Client</h2>
 
-<h2>New Patient - Select Client</h2>
+    <form action="/patients/select-client" method="POST">
+        <ul class="select-client-form">
+            <li>
+                <label for="client-name">Select Client</label>
+            </li>
+            <li>
+                <select name="client-name" id="client-name" required>
+                    <option value="" disabled="True" selected>--Select Client</option>
+                    {% for client in all_clients %}
+                    <option value="{{ client.id}}" {% if client.registered == False %} disabled="True" {% endif %}>{{ client.first_name }} {{ client.last_name }} {% if client.registered == False %} -- Unregistered {% endif %}</option>
+                    {% endfor %}
+                </select>
+            </li>
+            <li>
+                <input type="submit" value="Select Client" class="button-submit vet-button">
+            </li>
+        </ul>
+    </form>
 
-<form action="/patients/select-client" method="POST">
-    <ul>
-        <li>
-            <label for="client-name">Select Client</label>
-            <select name="client-name" id="client-name" required>
-                <option value="" disabled="True" selected>--Select Client</option>
-                {% for client in all_clients %}
-                <option value="{{ client.id}}" {% if client.registered == False %} disabled="True" {% endif %}>{{ client.first_name }} {{ client.last_name }} {% if client.registered == False %} -- Unregistered {% endif %}</option>
-                {% endfor %}
-            </select>
-        </li>
-        <li>
-            <input type="submit" value="Select Client">
-        </li>
-    </ul>
-</form>
+    <form action="/clients/new" method="get">
+        <input type="submit" value="Create New Client" class="button-submit">
+    </form>
 
-<form action="/clients/new" method="get">
-    <input type="submit" value="Create New Client">
-</form>
+</article>
 {% endblock %}

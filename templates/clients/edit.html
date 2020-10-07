@@ -1,51 +1,62 @@
 {% extends 'index.html' %}
 
 {% block main %}
+<article>
+    <h2>Edit {{ client.first_name}} {{ client.last_name }}</h2>
 
-<h2>Edit {{ client.first_name}} {{ client.last_name }}</h2>
-
-<form action="/clients/{{ client.id }}" method="post">
-    <ul>
-        <li>
-            <label for="client-first-name">First Name</label>
-            <input type="text" name="first-name" id="client-first-name" value={{ client.first_name }} required>
-        </li>
-        <li>
-            <label for="client-last-name">Last name</label>
-            <input type="text" name="last-name" id="client-last-name" value={{ client.last_name }} required>
-        </li>
-        <li>
-            <label for="phone-number">Phone Number</label>
-            <input type="text" name="phone-number" id="phone-number" value="{{ client.phone_number[0:5] }} {{ client.phone_number[5:8] }} {{ client.phone_number[8:] }}" required>
-        </li>
-        <li>
-            <label for="address">Address</label>
-            <input type="text" name="address" id="address" value="{{ client.address }}" required>
-        </li>
-        <li>
-            <label for="vet-assigned">Vet Assigned</label>
-
-                <select name="vet-assigned" id="vet-assigned">
-                    <option value="" disabled="True" required>--Select Vet--</option>
-                    {% for vet in all_vets %}
-                    <option value="{{ vet.id }}" {% if vet.id == client.vet.id %} selected {% endif %}>{{ vet.first_name }} {{ vet.last_name }} </option>
-                    {% endfor %}
-                </select>
-        </li>
-        <!-- Insert pets container here -->
-        <li>
-            <label for="registered">Registered?</label>
-            <input type="radio" name="registered" id="false" value="N" {% if client.registered == False %} checked {% endif %}>
-            <label for="false">N</label>
-            <input type="radio" name="registered" id="true" value="Y" {% if client.registered == True %} checked {% endif %}>
-            <label for="true">Y</label>
-        </li>
-        <li>
-            <input type="submit" value="Update">
-        </li>
-    </ul>
-</form>
-
+    <form action="/clients/{{ client.id }}" method="post" class="client-object">
+        <ul class="client-details new-client-details">
+            <section id="new-client-form">
+                <li>
+                    <label for="client-first-name">First Name</label>
+                </li>
+                <li>
+                    <input type="text" name="first-name" id="client-first-name" value={{ client.first_name }} required>
+                </li>
+                <li>
+                    <label for="client-last-name">Last name</label>
+                </li>
+                <li>
+                    <input type="text" name="last-name" id="client-last-name" value={{ client.last_name }} required>
+                </li>
+                <li>
+                    <label for="phone-number">Phone Number</label>
+                </li>
+                <li>
+                    <input type="text" name="phone-number" id="phone-number" value="{{ client.phone_number[0:5] }} {{ client.phone_number[5:8] }} {{ client.phone_number[8:] }}" required>
+                </li>
+                <li>
+                    <label for="address">Address</label>
+                </li>
+                <li>
+                    <textarea name="address" id="address" cols="17" rows="5">{{ client.address }}</textarea>
+                </li>
+                <li>
+                    <label for="vet-assigned">Vet Assigned</label>
+                </li>
+                <li>
+                    <select name="vet-assigned" id="vet-assigned">
+                        <option value="" disabled="True" required>--Select Vet--</option>
+                        {% for vet in all_vets %}
+                        <option value="{{ vet.id }}" {% if vet.id == client.vet.id %} selected {% endif %}>{{ vet.first_name }} {{ vet.last_name }} </option>
+                        {% endfor %}
+                    </select>
+                </li>
+                <!-- Insert pets container here -->
+                <li>
+                    <label for="registered">Registered?</label>
+                    <input type="radio" name="registered" id="false" value="N" {% if client.registered == False %} checked {% endif %}>
+                    <label for="false">N</label>
+                    <input type="radio" name="registered" id="true" value="Y" {% if client.registered == True %} checked {% endif %}>
+                    <label for="true">Y</label>
+                </li>
+                <li>
+                    <input type="submit" value="Update" class="button-submit vet-button">
+                </li>
+            </section>
+        </ul>
+    </form>
+</article>
 <!-- INSERT new pet for existing client form here -->
 
 
