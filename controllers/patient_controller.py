@@ -6,6 +6,7 @@ from models.src.client import Client
 from models.src.vet import Vet
 from models.src.patient import Patient
 from models.src.date_changer import *
+from models.src.pet_lists import *
 
 import repositories.patient_repository as patient_repository
 import repositories.client_repository as client_repository
@@ -40,7 +41,8 @@ def new_patient():
     selected_client = client_repository.select(request.form["client-name"])
     clients = client_repository.select_all()
     vets = vet_repository.select_all()
-    return render_template('patients/new.html', selected_client=selected_client, all_clients=clients, all_vets=vets)
+    pet_types.sort()
+    return render_template('patients/new.html', selected_client=selected_client, all_clients=clients, all_vets=vets, pet_types=pet_types)
 
 # CREATE
 @patients_blueprint.route('/patients/create', methods=["POST"])
@@ -76,7 +78,8 @@ def edit_patient(id):
     dob = date_to_date_box(patient.dob)
     check_in = date_to_date_box(patient.check_in_date)
     check_out = date_to_date_box(patient.check_out_date)
-    return render_template('/patients/edit.html', patient=patient, all_clients=clients, all_vets=vets, dob=dob, check_in=check_in, check_out=check_out)
+    pet_types.sort()
+    return render_template('/patients/edit.html', patient=patient, all_clients=clients, all_vets=vets, dob=dob, check_in=check_in, check_out=check_out, pet_types=pet_types)
 
 # UPDATE
 @patients_blueprint.route('/patients/<id>', methods=["POST"])
