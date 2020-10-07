@@ -1,37 +1,55 @@
 {% extends 'index.html' %}
 
 {% block main %}
+<article>
+    <h2>Add Treatment to {{ selected_patient.name }}</h2>
 
-<h2>Add Treatment to {{ selected_patient.name }}</h2>
-
-<form action="/treatments/{{ selected_patient.id }}/create" method="post">
-    <ul>
-        <li>
-            <label for="patient-name">Patient Name</label>
-            <input type="text" name="patient-name" id="patient-name" value="{{ selected_patient.name }}" disabled="True">
-        </li>
-        <li>
-            <label for="vet-name">Vet Name</label>
-            <select name="vet-name" id="vet-name">
-                <option value="vet-name" disabled="True">--Select Vet--</option>
-                {% for vet in all_vets %}
-                <option value="{{ vet.id }}" {% if selected_patient.vet.id == vet.id %} selected {% endif %}>{{ vet.first_name }} {{ vet.last_name }}</option>
-                {% endfor %}
-            </select>
-        </li>
-        <li>
-            <label for="date">Date</label>
-            <input type="date" name="date" id="date" min="1000-01-01" max="3000-01-01" value="{{ date_today }}" required>
-        </li>
-        <li>
-            <label for="notes">Treatment Notes</label>
-            <textarea name="notes" id="notes" cols="30" rows="10"></textarea>
-        </li>
-        <li>
-            <input type="submit" value="Create">
-        </li>
-    </ul>
-</form>
-
+    <form action="/treatments/{{ selected_patient.id }}/create" method="post" class="new-treatment-object-container">
+        <ul class="new-treatment-object">
+            <section class="treatment-details">
+                <div class="treatment-patient-name">
+                    <li>
+                        <label for="patient-name">Patient Name</label>
+                    </li>
+                    <li>
+                        <input type="text" name="patient-name" id="patient-name" value="{{ selected_patient.name }}" disabled="True" class="readonly">
+                    </li>
+                </div>
+                <div class="treatment-vet-name">
+                    <li>
+                        <label for="vet-name">Vet Name</label>
+                    </li>
+                    <li>
+                        <select name="vet-name" id="vet-name">
+                            <option value="vet-name" disabled="True">--Select Vet--</option>
+                            {% for vet in all_vets %}
+                            <option value="{{ vet.id }}" {% if selected_patient.vet.id == vet.id %} selected {% endif %}>{{ vet.first_name }} {{ vet.last_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </li>
+                </div>
+                <div class="treatment-date">
+                    <li>
+                        <label for="date">Date</label>
+                    </li>
+                    <li>
+                        <input type="date" name="date" id="date" min="1000-01-01" max="3000-01-01" value="{{ date_today }}" required>
+                    </li>
+                </div>
+            </section>
+            <section class="treatment-note-new">
+                <li>
+                    <label for="notes">Treatment Notes</label>
+                </li>
+                <li>
+                    <textarea name="notes" id="notes" cols="50" rows="10"></textarea>
+                </li>
+            </section>
+            <li>
+                <input type="submit" value="Create" class="button-submit vet-button">
+            </li>
+        </ul>
+    </form>
+</article>
 {% endblock %}
 

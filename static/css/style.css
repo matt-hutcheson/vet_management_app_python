@@ -288,3 +288,30 @@ th {
     margin-bottom: 5px;
     text-align: center;
 }
+
+/* new treatment form */
+
+.new-treatment-object-container {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+
+.new-treatment-object {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #454552;
+    width: 40vw;
+}
+
+.treatment-details {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+}
+
+.treatment-details > div {
+    margin: 10px;
+}
