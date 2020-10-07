@@ -31,10 +31,10 @@
                 </li>
                 <li>
                     <select name="job-title" id="job-title" required>
-                        <option value="graduate" {% if vet.job_title == "Graduate" %} selected {% endif %}>Graduate</option>
-                        <option value="junior" {% if vet.job_title == "Junior" %} selected {% endif %}>Junior</option>
-                        <option value="senior" {% if vet.job_title == "Senior" %} selected {% endif %}>Senior</option>
-                        <option value="partner" {% if vet.job_title == "Practice Partner" %} selected {% endif %}>Practice Partner</option>
+                        <option value="Graduate" {% if vet.job_title == "Graduate" %} selected {% endif %}>Graduate</option>
+                        <option value="Junior" {% if vet.job_title == "Junior" %} selected {% endif %}>Junior</option>
+                        <option value="Senior" {% if vet.job_title == "Senior" %} selected {% endif %}>Senior</option>
+                        <option value="Practice Partner" {% if vet.job_title == "Practice Partner" %} selected {% endif %}>Practice Partner</option>
                     </select>
                 </li>
                 <li>
@@ -42,7 +42,7 @@
                     <input type="text" name="id" id="id" value={{ vet.id }} readonly class="readonly">
                 </li>
                 <li>
-                    <input type="submit" value="Edit" class="button-submit vet-button">
+                    <input type="submit" value="Update" class="button-submit vet-button">
                 </li>
             </ul>
         </div>

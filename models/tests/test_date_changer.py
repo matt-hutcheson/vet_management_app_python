@@ -13,7 +13,7 @@ class TestDateChanger(unittest.TestCase):
         self.assertEqual(3, date_to_age("19/08/2017"))
 
     def test_age_to_date(self):
-        self.assertEqual("2017-10-06", age_to_date(3))
+        self.assertEqual("2017-10-08", age_to_date(3))
 
     def test_check_checked_in__True(self):
         self.assertEqual(True, check_checked_in("03/10/2020", "10/10/2020"))
@@ -21,5 +21,8 @@ class TestDateChanger(unittest.TestCase):
     def test_check_checked_in__False(self):
         self.assertEqual(False, check_checked_in("03/10/2020", "04/10/2020")) 
 
+    def test_check_checked_in__True(self):
+        self.assertEqual(True, check_checked_in("07/10/2020", "07/10/2020"))
+
     def test_date_today(self):
-        self.assertEqual("2020-10-05", date_today())
+        self.assertEqual("2020-10-07", date_today())

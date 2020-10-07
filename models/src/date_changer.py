@@ -30,7 +30,7 @@ def age_to_date(age):
     return dob
 
 def check_checked_in(check_in_date, check_out_date):
-    if datetime.datetime.strptime(check_in_date, "%d/%m/%Y") < datetime.datetime.now() and datetime.datetime.now() < datetime.datetime.strptime(check_out_date, "%d/%m/%Y"):
+    if datetime.datetime.strptime(check_in_date, "%d/%m/%Y").date() <= datetime.datetime.now().date() and datetime.datetime.now().date() <= datetime.datetime.strptime(check_out_date, "%d/%m/%Y").date():
         checked_in = True
     else:
         checked_in = False
