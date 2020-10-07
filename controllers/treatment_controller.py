@@ -46,7 +46,6 @@ def new_patient():
 @treatments_blueprint.route('/treatments/<patient_id>/create', methods=['POST'])
 def create_treatment(patient_id):
     patient_id = patient_id
-    print(patient_id)
     vet_id = request.form['vet-name']
     date = date_box_to_date(request.form['date'])
     notes = request.form['notes']

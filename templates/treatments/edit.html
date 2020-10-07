@@ -4,7 +4,7 @@
 <article>
     <h2>Edit Treatment for {{ treatment.patient.name }}</h2>
 
-    <form action="/treatments/{{ treatment.patient.id }}/{{ treatment.patient.id }}" method="post" class="new-treatment-object-container">
+    <form action="/treatments/{{ treatment.patient.id }}/{{ treatment.id }}" method="post" class="new-treatment-object-container">
         <ul class="new-treatment-object">
             <section class="treatment-details">
                 <div class="treatment-patient-name">
@@ -41,7 +41,7 @@
                     <label for="notes">Treatment Notes</label>
                 </li>
                 <li>
-                    <textarea name="notes" id="notes" cols="50" default="{{treatment.notes}}" rows="10"></textarea>
+                    <textarea name="notes" id="notes" cols="50" rows="10">{{ treatment.notes }}</textarea>
                 </li>
             </section>
             <li>
