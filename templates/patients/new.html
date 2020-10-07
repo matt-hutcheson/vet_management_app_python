@@ -17,10 +17,10 @@
                         <label for="type">Type</label>
                     </li>
                     <li>
-                        <select name="type" id="type">
+                        <select name="type" id="type" required>
                             <option value="" disabled="True" selected>--Select Patient Type--</option>
                             {% for pet_type in pet_types %}
-                            <option value="{{ type }}">{{ pet_type }}</option>
+                            <option value="{{ pet_type }}">{{ pet_type }}</option>
                             {% endfor %}
                         </select>
                     </li>

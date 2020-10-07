@@ -58,7 +58,7 @@ def create_patient():
     if request.form['dob-select'] == "date":
         dob = date_box_to_date(request.form['dob'])
     elif request.form['dob-select'] == "age":
-        dob = age_to_date(request.form['age'])
+        dob = date_box_to_date(age_to_date(request.form['age']))
     if request.form['gender'] == "Male":
         gender = "M"
     elif request.form['gender'] == "Female":

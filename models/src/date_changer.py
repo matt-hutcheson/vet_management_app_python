@@ -22,11 +22,11 @@ def age_to_date(age):
     new_date = datetime.date.today() - datetime.timedelta(days=(years*days_per_year))
     if len(str(new_date.day)) < 2:
         if len(str(new_date.month)) < 2:
-            dob = str(new_date.year) + "-0" + str(new_date.month) + "-0" + str(new_date.day)
+            dob = str(new_date.year) + "-0" + str(new_date.month) + "-0" + str(new_date.day -1)
         else:
-            dob = str(new_date.year) + "-" + str(new_date.month) + "-0" + str(new_date.day)
+            dob = str(new_date.year) + "-" + str(new_date.month) + "-0" + str(new_date.day -1)
     else:
-        dob = str(new_date.year) + "-" + str(new_date.month) + "-" + str(new_date.day)
+        dob = str(new_date.year) + "-" + str(new_date.month) + "-" + str(new_date.day -1)
     return dob
 
 def check_checked_in(check_in_date, check_out_date):
