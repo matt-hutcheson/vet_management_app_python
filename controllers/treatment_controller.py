@@ -25,7 +25,8 @@ def treatments(patient_id):
 def new_treatment(patient_id):
     patient = patient_repository.select(patient_id)
     vets = vet_repository.select_all()
-    return render_template('/treatments/new.html', selected_patient=patient, all_vets=vets)
+    date = date_today()
+    return render_template('/treatments/new.html', selected_patient=patient, all_vets=vets, date_today=date)
 
 @treatments_blueprint.route('/treatments/new')
 def new_treatment_select_patient():
@@ -38,6 +39,7 @@ def new_patient():
     patients = patient_repository.select_all()
     vets = vet_repository.select_all()
     date = date_today()
+    print(date)
     return render_template('treatments/new.html', selected_patient=selected_patient, all_patients=patients, all_vets=vets, date_today=date)
 
 # CREATE

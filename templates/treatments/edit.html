@@ -41,14 +41,12 @@
                     <label for="notes">Treatment Notes</label>
                 </li>
                 <li>
-                    <textarea name="notes" id="notes" cols="50" rows="10" onclick="this.select();">{{ treatment.notes }}</textarea>
+                    <textarea name="notes" id="notes" cols="50" default="{{treatment.notes}}" rows="10"></textarea>
                 </li>
             </section>
             <li>
                 <input type="submit" value="Update" class="button-submit vet-button">
             </li>
-            
-
         </ul>
     </form>
 </article>
