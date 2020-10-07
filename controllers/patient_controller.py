@@ -18,12 +18,14 @@ patients_blueprint = Blueprint("patients", __name__)
 @patients_blueprint.route('/patients')
 def patients():
     patients = patient_repository.select_all()
+    patients.sort(key=lambda x: x.name)
     patient_list = "All Patients"
     return render_template('patients/index.html', all_patients = patients, patient_list = patient_list)
 
 @patients_blueprint.route('/patients/checked-in')
 def checked_in_patients():
     patients = patient_repository.select_all()
+    patients.sort(key=lambda x: x.name)
     patient_list = "In Patients"
     for patient in patients:
         if patient.checked_in == False:

@@ -13,12 +13,14 @@ vets_blueprint = Blueprint("vets", __name__)
 @vets_blueprint.route("/vets")
 def vets():
     vets = vet_repository.select_all()
+    vets.sort(key=lambda x: x.first_name)
     return render_template("vets/index.html", all_vets = vets)
 
 # INDEX PATIENTS OF VET
 @vets_blueprint.route("/vets/<vet_id>/patients")
 def vet_patients(vet_id):
     patients = vet_repository.select_patients(vet_id)
+    patients.sort(key=lambda x: x.name)
     vet = vet_repository.select(vet_id)
     return render_template("vets/index_patients.html", all_patients=patients, vet=vet)
 
@@ -26,6 +28,7 @@ def vet_patients(vet_id):
 @vets_blueprint.route("/vets/<vet_id>/clients")
 def vet_clients(vet_id):
     clients = vet_repository.select_clients(vet_id)
+    clients.sort(key=lambda x: x.first_name)
     vet = vet_repository.select(vet_id)
     return render_template("vets/index_clients.html", all_clients=clients, vet=vet)
 

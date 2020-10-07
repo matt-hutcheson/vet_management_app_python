@@ -17,6 +17,7 @@ treatments_blueprint = Blueprint("treatments", __name__)
 @treatments_blueprint.route('/treatments/<patient_id>')
 def treatments(patient_id):
     treatments = treatment_repository.select_all(patient_id)
+    treatments.sort(key=lambda x: date_to_date_box(x.date), reverse=True)
     patient = patient_repository.select(patient_id)
     return render_template('/treatments/index.html', all_treatments=treatments, selected_patient=patient)
 
