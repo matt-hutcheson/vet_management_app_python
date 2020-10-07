@@ -1,33 +1,45 @@
 {% extends 'index.html' %}
 
 {% block main %}
-<article class="index">
+<article class="index" id="index-treatments">
     <h2>{{ selected_patient.name }} Treatment History</h2>
-
-    <form action="/treatments/{{ selected_patient.id }}/new" method="get">
-        <input type="submit" value="Add New Treatment" class="button-submit">
-    </form>
-
+    <div id="new-treatment-container">
+        <form action="/treatments/{{ selected_patient.id }}/new" method="get">
+            <input type="submit" value="Add New Treatment" class="button-submit vet-button">
+        </form>
+    </div>
     {% for treatment in all_treatments %}
 
-    <ul>
-        <li>
-            {{ treatment.vet.first_name }} {{ treatment.vet.last_name }}
-        </li>
-        <li>
-            {{ treatment.date }}
-        </li>
-        <li>
-            {{ treatment.notes }}
+    <ul class="treatment-object">
+        <div class="treatment-name-date">
+            <div class="treatment-vet-name-container">
+                <li>
+                    <label for="vet-name">Vet Name</label>
+                </li>
+                <li class="treatment-vet-name">
+                    {{ treatment.vet.first_name }} {{ treatment.vet.last_name }}
+                </li>
+            </div>
+            <div class=treatment-date-container>
+                <li>
+                    <label for="date">Date</label>
+                </li>
+                <li class="treatment-date">
+                    {{ treatment.date }}
+                </li>
+            </div>
+        </div>
+        <li class="treatment-notes">
+            <p>{{ treatment.notes }}</p>
         </li>
         <li>
             <form action="/treatments/{{ treatment.patient.id }}/{{ treatment.id }}/edit" method="get">
-                <input type="submit" value="Edit" class="button-submit">
+                <input type="submit" value="Edit" class="button-submit vet-button">
             </form>
         </li>
         <li>
             <form action="/treatments/{{ treatment.patient.id }}/{{ treatment.id }}/delete" method="post">
-                <input type="submit" value="Delete" class="button-submit">
+                <input type="submit" value="Delete" class="button-submit vet-button">
             </form>
         </li>
     </ul>

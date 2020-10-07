@@ -105,9 +105,41 @@ h2 {
     border-radius: 25%;
 }
 
+.edit-vet-object {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+
+.edit-vet-details {
+    background-color: #4ea1d3;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+    border: solid #454552;
+    border-radius: 25%;
+}
+
+.edit-vet-details > li {
+    margin: 5px;
+    width: 15ch;
+    text-align: center;
+}
+
+.edit-vet-details > li > input {
+    text-align: center;
+}
+
 .new-vet-details > li > input {
     margin: 5px;
     width: 15ch;
+}
+
+.readonly {
+    background-color: rgb(173, 173, 173);
 }
 
 .view-options {
@@ -128,12 +160,54 @@ h2 {
 /* New client form */
 
 .new-client-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    display: flex;
+    flex-flow: row;
 }
 
-.address {
-    width: 24ch !important;
-    height: 24ch;
+
+/* Treatment index */
+
+#new-treatment-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
+.treatment-object {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80vw;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.treatment-notes {
+    flex: 1;
+    align-self: stretch;
+    border: 1px solid #454552;
+    padding-left: 3px;
+}
+
+.treatment-name-date {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    margin-right: 10px;
+}
+
+.treatment-name-date > div > li {
+    border: 1px solid #454552;
+    padding: 3px;
+}
+
+.treatment-vet-name-container {
+    margin-bottom: 10px;
+}
+
+th {
+    padding: 0px;
+    border: none;
 }
