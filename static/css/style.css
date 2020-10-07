@@ -265,3 +265,26 @@ th {
 #dob-age-radios > div {
     margin: 10px;
 }
+
+.patient-object {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.new-patient-details {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    border: solid #454552;
+    padding: 10px;
+    background-color: #4ea1d3;
+    border-radius: 5%;
+}
+
+.new-patient-form > li {
+    margin-bottom: 5px;
+    text-align: center;
+}
