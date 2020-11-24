@@ -36,7 +36,8 @@ def checked_in_patients():
 @patients_blueprint.route('/patients/new', methods=["GET"])
 def new_patient_get_client():
     clients = client_repository.select_all()
-    return render_template('patients/select_client.html', all_clients=clients)
+    date = date_today()
+    return render_template('patients/select_client.html', all_clients=clients, date_today=date)
 
 @patients_blueprint.route('/patients/select-client', methods=["POST"])
 def new_patient():
@@ -45,7 +46,8 @@ def new_patient():
     clients = client_repository.select_all()
     vets = vet_repository.select_all()
     pet_types.sort()
-    return render_template('patients/new.html', selected_client=selected_client, selected_vet=selected_vet, all_clients=clients, all_vets=vets, pet_types=pet_types)
+    date = date_today()
+    return render_template('patients/new.html', selected_client=selected_client, selected_vet=selected_vet, all_clients=clients, all_vets=vets, pet_types=pet_types, date_today=date)
 
 # CREATE
 @patients_blueprint.route('/patients/create', methods=["POST"])
