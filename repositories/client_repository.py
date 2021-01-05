@@ -5,7 +5,6 @@ from models.src.vet import Vet
 from models.src.patient import Patient
 
 import repositories.vet_repository as vet_repository
-import repositories.client_repository as client_repository
 
 def save(client):
     sql = "INSERT INTO clients (first_name, last_name, phone_number, address, registered, vet_id) VALUES (%s, %s, %s, %s, %s, %s) RETURNING *"
@@ -49,7 +48,7 @@ def select_pets(client_id):
     if results is not None:
         for row in results:
             vet = vet_repository.select(row['vet_id'])
-            client = client_repository.select(row['client_id'])
+            client = select(row['client_id'])
             pet = Patient(row['name'], row['dob'], row['type'], row['breed'], row['gender'], row['status'], vet, client, row['check_in_date'], row['check_out_date'], row['id'])
             pets.append(pet)
     return pets

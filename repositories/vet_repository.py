@@ -4,8 +4,6 @@ from models.src.vet import Vet
 from models.src.patient import Patient
 from models.src.client import Client
 
-import repositories.client_repository as client_repository
-
 def save(vet):
     sql = "INSERT INTO vets (first_name, last_name, job_title) VALUES (%s, %s, %s) RETURNING *"
     values = [vet.first_name, vet.last_name, vet.job_title]
@@ -38,6 +36,7 @@ def select(id):
     return vet
 
 def select_patients(vet_id):
+    import repositories.client_repository as client_repository
     patients = []
     sql = "SELECT * FROM patients WHERE vet_id = %s"
     values = [vet_id]
