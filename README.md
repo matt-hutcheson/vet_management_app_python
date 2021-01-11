@@ -1,5 +1,7 @@
-# Vet Management App - WEB programming with Python
-A veterinary practice has approached you to build a web application to help them manage their animals and vets. A vet may look after many animals at a time. An animal is registered with only one vet.
+# Little Rascals
+Little rascals is a vet management app designed to aid vets with the management of their clients, patients and treatments.
+
+![homepage](./homepage_screenshot.png)
 
 ## MVP
 - The practice wants to be able to register / track animals. Important information for the vets to know is -
@@ -18,7 +20,7 @@ A veterinary practice has approached you to build a web application to help them
 - Sometimes an owner does not know the DOB. Allow them to enter an age instead. Try and make sure this always up to date - ie if they visit again a year from now a 3 yr old dog is now 4.
 - Add extra functionality of your choosing - assigning treatments, a more comprehensive way of maintaining treatment notes over time. Appointments. Pricing / billing.
 
-## Timescale 
+## Timescale
 1 week build time
 
 ## Limitations/Restrictions
@@ -34,3 +36,8 @@ It must NOT use:
 - JavaScript. At all. Don't even think about it.
 - Any pre-built CSS libraries, such as Bootstrap.
 - Authentication. Assume that the user already has secure access to the app.
+
+## Setup/Installation
+Run the app from the root folder using:
+
+    $ python3 app.py
